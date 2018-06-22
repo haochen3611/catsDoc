@@ -1,7 +1,7 @@
 #!/bin/bash
 # Updates the whole sphinx project after modifications.
 
-cd /home/hao/Documents/autoCarProject2018/docs/
+cd /home/hao/Documents/autoCarProject2018/docs/doc/
 
 sphinx-apidoc -f -o ./rst/ ./scripts/
 
