@@ -14,7 +14,7 @@
 #
 import os
 import sys
-sys.path.append('/home/hao/Documents/autoCarProject2018/docs/scripts/')
+sys.path.append('./scripts/')
 
 
 # -- Project information -----------------------------------------------------
