@@ -5,6 +5,8 @@ cd /home/hao/Documents/autoCarProject2018/docs/doc/
 
 sphinx-apidoc -f -o ./rst/ ./scripts/
 
+shinx-auto
+
 sphinx-build -b html ./rst/ ./html/
 
 sudo rm -rf /var/www/html/test/*
