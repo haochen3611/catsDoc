@@ -7,7 +7,9 @@ cd /home/hao/Documents/autoCarProject2018/docs/doc/
 
 sphinx-apidoc -f -o . ./scripts/
 
-sphinx-build -b html ./rst/ ./html/
+make html
+
+#sphinx-build -b html . ./_build/html/
 
 sudo rm -rf /var/www/html/test/*
 
