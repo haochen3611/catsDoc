@@ -3,9 +3,9 @@
 
 cd /home/hao/Documents/autoCarProject2018/docs/doc/
 
-sphinx-apidoc -f -o ./rst/ ./scripts/
+#sphinx-apidoc -f -o ./rst/ ./scripts/
 
-shinx-auto
+sphinx-apidoc -f -o . ./scripts/
 
 sphinx-build -b html ./rst/ ./html/
 
