@@ -1,0 +1,218 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>longitudinal_contrl module &#8212; CATS  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-longitudinal_contrl">
+<span id="longitudinal-contrl-module"></span><h1>longitudinal_contrl module<a class="headerlink" href="#module-longitudinal_contrl" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="longitudinal_contrl.LongitudinalControl">
+<em class="property">class </em><code class="descclassname">longitudinal_contrl.</code><code class="descname">LongitudinalControl</code><span class="sig-paren">(</span><em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#longitudinal_contrl.LongitudinalControl" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Controls the longitudinal movement of the vehicle by controlling gas and brake.</p>
+<dl class="attribute">
+<dt id="longitudinal_contrl.LongitudinalControl.driver">
+<code class="descname">driver</code><a class="headerlink" href="#longitudinal_contrl.LongitudinalControl.driver" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – Driver object specifies safety, aggression parameters of the driver</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="longitudinal_contrl.LongitudinalControl.control">
+<code class="descname">control</code><span class="sig-paren">(</span><em>len_visible_cars</em>, <em>speed</em>, <em>speed_limit</em>, <em>distance_from_front_car</em>, <em>distance_from_end_node</em>, <em>traffic_signal_state</em>, <em>steering_angle=0</em>, <em>gas=0</em>, <em>brake=0</em><span class="sig-paren">)</span><a class="headerlink" href="#longitudinal_contrl.LongitudinalControl.control" title="Permalink to this definition">¶</a></dt>
+<dd><p>Chooses which controller to use based on the inputs. Checks if there are any vehicles ahead and determines if cruise control should be used or some other control.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>len_visible_cars</strong> (<em>int</em>) – # of vehicles in front within a certain distance</li>
+<li><strong>speed</strong> (<em>float</em>) – speed of the vehicle</li>
+<li><strong>speed_limit</strong> (<em>float</em>) – speed_limit of the road</li>
+<li><strong>distance_from_front_car</strong> (<em>float</em>) – </li>
+<li><strong>distance_from_end_node</strong> (<em>float</em>) – </li>
+<li><strong>traffic_signal_state</strong> (<em>tuple</em>) – </li>
+<li><strong>steering_angle</strong> (<em>float</em>) – angle in radians</li>
+<li><strong>gas</strong> (<em>float</em>) – acceleration to give</li>
+<li><strong>brake</strong> (<em>float</em>) – brake to give</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(steering_angle, gas, brake)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="longitudinal_contrl.LongitudinalControl.cruise">
+<code class="descname">cruise</code><span class="sig-paren">(</span><em>speed</em>, <em>speed_limit</em>, <em>distance_from_front_car</em>, <em>steering_angle</em>, <em>gas</em>, <em>brake</em><span class="sig-paren">)</span><a class="headerlink" href="#longitudinal_contrl.LongitudinalControl.cruise" title="Permalink to this definition">¶</a></dt>
+<dd><p>Provides a basic cruise control assist. Maintains a safe distance from front vehicle, and if there is no front vehicle, follows a safe velocity as determined by the road limit and driver aggression/safety.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>speed</strong> (<em>float</em>) – speed of the vehicle</li>
+<li><strong>speed_limit</strong> (<em>float</em>) – as determined by the road, traffic rules</li>
+<li><strong>distance_from_front_car</strong> (<em>float</em>) – distance from front vehicle</li>
+<li><strong>steering_angle</strong> (<em>float</em>) – angle in radians</li>
+<li><strong>gas</strong> (<em>float</em>) – acceleration</li>
+<li><strong>brake</strong> (<em>float</em>) – brake</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(steering_angle, gas, brake)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="longitudinal_contrl.LongitudinalControl.follow_traffic_signals">
+<code class="descname">follow_traffic_signals</code><span class="sig-paren">(</span><em>speed</em>, <em>speed_limit</em>, <em>distance_from_end_node</em>, <em>distance_from_front_car</em>, <em>traffic_signal_state</em><span class="sig-paren">)</span><a class="headerlink" href="#longitudinal_contrl.LongitudinalControl.follow_traffic_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Determines what to do based on the traffic signal state.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>speed</strong> (<em>float</em>) – speed of the vehicle</li>
+<li><strong>speed_limit</strong> (<em>float</em>) – as determined by traffic rules</li>
+<li><strong>distance_from_end_node</strong> (<em>float</em>) – distance from the end of the road</li>
+<li><strong>distance_from_front_car</strong> (<em>float</em>) – distance from the vehicle in front</li>
+<li><strong>traffic_signal_state</strong> (<em>tuple</em>) – (color, time remaining)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(steering_angle, gas, brake)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="longitudinal_contrl.LongitudinalControl.right_of_way">
+<code class="descname">right_of_way</code><span class="sig-paren">(</span><em>intersection_traffic</em>, <em>len_visible_cars</em>, <em>speed</em>, <em>speed_limit</em>, <em>distance_from_front_car</em>, <em>distance_from_end_node</em>, <em>next_turn_direction</em>, <em>steering_angle=0</em>, <em>gas=0</em>, <em>brake=0</em><span class="sig-paren">)</span><a class="headerlink" href="#longitudinal_contrl.LongitudinalControl.right_of_way" title="Permalink to this definition">¶</a></dt>
+<dd><p>Encodes the right of way rules at an intersection. For example, a vehicle on a straight road gets preference and goes without stopping, while a vehicle that is turning onto the straight road has to wait.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>intersection_traffic</strong> (<em>dict</em>) – with keys as 1,3,5,7 and values as list of vehicles</li>
+<li><strong>len_visible_cars</strong> (<em>int</em>) – # of vehicles in front within a certain distance</li>
+<li><strong>speed</strong> (<em>float</em>) – speed of the vehicle</li>
+<li><strong>speed_limit</strong> (<em>float</em>) – as determined by traffic rules</li>
+<li><strong>distance_from_front_car</strong> (<em>float</em>) – distance from the vehicle in front</li>
+<li><strong>distance_from_end_node</strong> (<em>float</em>) – distance from the end of the road</li>
+<li><strong>next_turn_direction</strong> (<em>str</em>) – ‘right’ or ‘left’ or ‘straight’</li>
+<li><strong>steering_angle</strong> (<em>float</em>) – angle in radians</li>
+<li><strong>gas</strong> (<em>float</em>) – acceleration to give</li>
+<li><strong>brake</strong> (<em>float</em>) – brake to give</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(steering_angle, gas, brake)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/longitudinal_contrl.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Ohio State University.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>

@@ -6,7 +6,7 @@
   <head>
     <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>scripts &#8212; CATS  documentation</title>
+    <title>driving_model module &#8212; CATS  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
     <script type="text/javascript" src="_static/documentation_options.js"></script>
@@ -34,26 +34,39 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="scripts">
-<h1>scripts<a class="headerlink" href="#scripts" title="Permalink to this headline">¶</a></h1>
-<div class="toctree-wrapper compound">
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="driver_attributes.html">driver_attributes module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="driving_model.html">driving_model module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="lane_center.html">lane_center module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="longitudinal_contrl.html">longitudinal_contrl module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="map.html">map module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="sensors.html">sensors package</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="sensors.html#submodules">Submodules</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-sensors.sensor">sensors.sensor module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-sensors.sensor_factory">sensors.sensor_factory module</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sensors.html#module-sensors">Module contents</a></li>
-</ul>
-</li>
-<li class="toctree-l1"><a class="reference internal" href="traffic.html">traffic module</a></li>
-<li class="toctree-l1"><a class="reference internal" href="update_car_states.html">update_car_states module</a></li>
-</ul>
-</div>
+  <div class="section" id="module-driving_model">
+<span id="driving-model-module"></span><h1>driving_model module<a class="headerlink" href="#module-driving_model" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="driving_model.ADAS">
+<em class="property">class </em><code class="descclassname">driving_model.</code><code class="descname">ADAS</code><span class="sig-paren">(</span><em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#driving_model.ADAS" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Provides driver assistance functions</p>
+<dl class="attribute">
+<dt id="driving_model.ADAS.driver">
+<code class="descname">driver</code><a class="headerlink" href="#driving_model.ADAS.driver" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – object that maintains driver attributes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="driving_model.ADAS.longitudinal_control">
+<code class="descname">longitudinal_control</code><a class="headerlink" href="#driving_model.ADAS.longitudinal_control" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – object that controls longitudinal dynamics</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="driving_model.ADAS.lane_change">
+<code class="descname">lane_change</code><a class="headerlink" href="#driving_model.ADAS.lane_change" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – object that monitors lane_change control</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="driving_model.ADAS.lane_center">
+<code class="descname">lane_center</code><a class="headerlink" href="#driving_model.ADAS.lane_center" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – object that controls lane_centering</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 
 
@@ -65,7 +78,7 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/modules.rst.txt"
+      <li><a href="_sources/driving_model.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>

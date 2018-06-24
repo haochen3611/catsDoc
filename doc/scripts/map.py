@@ -46,8 +46,6 @@ def get_grade(x, y):
 class SubNode:
     """Characterizes points of a line string along a curved road.
 
-
-
     """
 
     def __init__(self, point_x, point_y):
@@ -87,11 +85,11 @@ class RoadString:
     """Encapsulates all the information about the road.
 
     Attributes:
-        __sub_nodes: list of SubNode objects at points on the linestring
-        __no_sub_nodes: number of subnodes in the linestring
-        __segment_headings: list of heading angle from one SubNode on the line string to the next SubNode
-        __perpendicular_segments: list of lines perpendicular to the line joining two adjacent SubNodes
-        __length_segments : list of lengths of segments joining two adjacent SubNodes
+        __sub_nodes (list): list of SubNode objects at points on the linestring
+        __no_sub_nodes (int): number of subnodes in the linestring
+        __segment_headings (list): list of heading angle from one SubNode on the line string to the next SubNode
+        __perpendicular_segments (list): list of lines perpendicular to the line joining two adjacent SubNodes
+        __length_segments (list): list of lengths of segments joining two adjacent SubNodes
 
     """
 

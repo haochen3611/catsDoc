@@ -1,0 +1,302 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>traffic module &#8212; CATS  documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+  </head><body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-traffic">
+<span id="traffic-module"></span><h1>traffic module<a class="headerlink" href="#module-traffic" title="Permalink to this headline">¶</a></h1>
+<p>Traffic module contains classes and methods for controlling the traffic signals in the simulator.</p>
+<dl class="class">
+<dt id="traffic.TrafficController">
+<em class="property">class </em><code class="descclassname">traffic.</code><code class="descname">TrafficController</code><a class="headerlink" href="#traffic.TrafficController" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Controls and synchronises all the traffic signals at an intersection</p>
+<p>The number of signals on a controller and the number of phases are coupled. In the current implementation, a fixed number of traffic signals is assumed (12) and the no of phases is fixed. The future implementation must include dynamically changing the “__no_phases” if a controller is instantiated with a different number of signals.</p>
+<dl class="attribute">
+<dt id="traffic.TrafficController.__no_phases">
+<code class="descname">__no_phases</code><a class="headerlink" href="#traffic.TrafficController.__no_phases" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – indicates the number of phases (this depends on the functionality and no of signals)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficController.__dt">
+<code class="descname">__dt</code><a class="headerlink" href="#traffic.TrafficController.__dt" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – time between successive traffic state updates</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficController.__scale">
+<code class="descname">__scale</code><a class="headerlink" href="#traffic.TrafficController.__scale" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em></p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficController.__cycle_length">
+<code class="descname">__cycle_length</code><a class="headerlink" href="#traffic.TrafficController.__cycle_length" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – cycle length is the time taken for one complete cycle (a signal going from g-y-r-g)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficController.__table">
+<code class="descname">__table</code><a class="headerlink" href="#traffic.TrafficController.__table" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – table defines the times at which the signals should switch. The entire control lies with this
+table</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficController.signals">
+<code class="descname">signals</code><a class="headerlink" href="#traffic.TrafficController.signals" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>list</em> – list of TrafficSignal objects</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficController.generate_table">
+<code class="descname">generate_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficController.generate_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Generates a table as described above with specified green time ratio, yellow time ratio and red time ratio. These ratios are coupled with the phase of the signal so care must be taken while changing these values.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">keys as the traffic signal tcid, and the value as a list described in the above example</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">dict</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficController.print_table">
+<code class="descname">print_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficController.print_table" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficController.reset_signals">
+<code class="descname">reset_signals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficController.reset_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets all the signals to the beginning of the time cycle. This can be used to adaptively change the relative phase of the all the signals.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficController.set_table">
+<code class="descname">set_table</code><span class="sig-paren">(</span><em>table</em><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficController.set_table" title="Permalink to this definition">¶</a></dt>
+<dd><p>Currently a public method to enable the users to set a custom and phase timing (relative to the start of the cycle).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>table</strong> – A dict with keys as the indices to the traffic signals and values as a list containing the phase</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Example:</th><td class="field-body"></td>
+</tr>
+</tbody>
+</table>
+<p>Consider a TrafficController of cycle length 30. The entry for signal 0 in the self.__table looks like this.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">table</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>Traffic Signal at index 0 is green for the first 10 seconds, yellow for the next five seconds, and red for the next 15 seconds. The last entry should match with the cycle length of the TrafficController.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficController.update_signals">
+<code class="descname">update_signals</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficController.update_signals" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method is called every update step in the main simulation loop to update all the signal states and timings.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="traffic.TrafficSignal">
+<em class="property">class </em><code class="descclassname">traffic.</code><code class="descname">TrafficSignal</code><span class="sig-paren">(</span><em>tcid</em><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficSignal" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Traffic Signal is an interface for the vehicle to ‘see’ the states. It is controlled by a TrafficController.</p>
+<dl class="attribute">
+<dt id="traffic.TrafficSignal.color">
+<code class="descname">color</code><a class="headerlink" href="#traffic.TrafficSignal.color" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – indicates the traffic state (red, green, yellow/amber)</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficSignal.time_remaining">
+<code class="descname">time_remaining</code><a class="headerlink" href="#traffic.TrafficSignal.time_remaining" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – time after which the color changes</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficSignal.tcid">
+<code class="descname">tcid</code><a class="headerlink" href="#traffic.TrafficSignal.tcid" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – unique identifier of the signal wrt to the controller</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficSignal.node">
+<code class="descname">node</code><a class="headerlink" href="#traffic.TrafficSignal.node" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>Node</em> – the node that has the traffic signal</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficSignal.tick">
+<code class="descname">tick</code><a class="headerlink" href="#traffic.TrafficSignal.tick" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – counter/ time</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficSignal.x">
+<code class="descname">x</code><a class="headerlink" href="#traffic.TrafficSignal.x" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – x coord of signal</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="traffic.TrafficSignal.y">
+<code class="descname">y</code><a class="headerlink" href="#traffic.TrafficSignal.y" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – y coord of signal</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficSignal.get_state">
+<code class="descname">get_state</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficSignal.get_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enables direct querying of the traffic signals’ states by the vehicles or any other object that has access to nodes. In the future implementation, communication module (v2x) should be interfaced with  traffic signals.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">[color, time remaining]</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficSignal.set_coords">
+<code class="descname">set_coords</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficSignal.set_coords" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the coordinates of the signal.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<em>object</em>) – x coord of signal</li>
+<li><strong>y</strong> (<em>object</em>) – y coord of signal</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficSignal.set_node">
+<code class="descname">set_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficSignal.set_node" title="Permalink to this definition">¶</a></dt>
+<dd><p>Links the signal to a node object, to enable referencing nodes while accessing signals. It is used while creating a map and assigning traffic signals to end nodes of roads ending at intersections.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<a class="reference internal" href="map.html#map.Node" title="map.Node"><em>Node</em></a>) – the node object to which the signal is assigned</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="traffic.TrafficSignal.set_state">
+<code class="descname">set_state</code><span class="sig-paren">(</span><em>color</em>, <em>time_remaining</em><span class="sig-paren">)</span><a class="headerlink" href="#traffic.TrafficSignal.set_state" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the state of the signals regarding to the color and remaining time.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>color</strong> (<em>str</em>) – ‘r’ for red, ‘g’ for green, ‘a’ for amber/yellow</li>
+<li><strong>time_remaining</strong> (<em>float</em>) – time remaining in the current phase (time after which the color changes)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/traffic.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    </div>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2018, Ohio State University.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+    </div>
+  </body>
+</html>
