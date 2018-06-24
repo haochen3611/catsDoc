@@ -16,3 +16,5 @@ sudo rm -rf /var/www/html/test/*
 sudo cp -r ./_build/html/* /var/www/html/test/
 
 sudo chown -R www-data:www-data /var/www/
+
+sudo cp -r ./_build/html/* /home/hao/Documents/autoCarProject2018/html/
