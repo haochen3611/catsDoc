@@ -14,8 +14,14 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('scripts/'))
-sys.path.insert(0, os.path.abspath('scripts/sensors'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/adas'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/display'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/driver'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/infrastructure'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/maps'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/physics'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/sensors'))
+sys.path.insert(0, os.path.abspath('scripts/core/lib/vehicles'))
 
 
 # -- Project information -----------------------------------------------------
