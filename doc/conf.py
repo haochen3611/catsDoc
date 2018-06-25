@@ -14,14 +14,17 @@
 #
 import os
 import sys
-sys.path.insert(0, os.path.abspath('scripts/core/lib/adas'))
-sys.path.insert(0, os.path.abspath('scripts/core/lib/display'))
-sys.path.insert(0, os.path.abspath('scripts/core/lib/driver'))
-sys.path.insert(0, os.path.abspath('scripts/core/lib/infrastructure'))
-sys.path.insert(0, os.path.abspath('scripts/core/lib/maps'))
-sys.path.insert(0, os.path.abspath('scripts/core/lib/physics'))
-sys.path.insert(0, os.path.abspath('scripts/core/lib/sensors'))
-sys.path.insert(0, os.path.abspath('scripts/core/lib/vehicles'))
+
+#sys.path.insert(0, os.path.abspath('scripts/core/'))
+sys.path.append(os.path.abspath('./scripts/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/adas/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/display/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/driver/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/infrastructure/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/maps/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/physics/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/sensors/'))
+# sys.path.insert(0, os.path.abspath('scripts/core/lib/vehicles/'))
 
 
 # -- Project information -----------------------------------------------------
@@ -91,7 +94,13 @@ html_theme = 'classic'
 # further.  For a list of options available for each theme, see the
 # documentation.
 #
-# html_theme_options = {}
+html_theme_options = {
+	'sidebarbgcolor': '#3A3838',
+	'footerbgcolor': '#3A3838',
+	'sidebartextcolor': 'White',
+	'relbarbgcolor': 'Maroon',
+	'sidebarlinkcolor': 'White',
+	}
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
