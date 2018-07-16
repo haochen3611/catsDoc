@@ -4,18 +4,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>core.lib.maps package &#8212; CATS  documentation</title>
+    <title>maps package &#8212; CATS  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="physics package" href="core.lib.physics.html" />
+    <link rel="prev" title="infrastructure package" href="core.lib.infrastructure.html" /> 
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -25,6 +36,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.physics.html" title="physics package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.lib.infrastructure.html" title="infrastructure package"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -34,28 +51,32 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="core-lib-maps-package">
-<h1>core.lib.maps package<a class="headerlink" href="#core-lib-maps-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="maps-package">
+<h1>maps package<a class="headerlink" href="#maps-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Imagine the diffculty in driving in a new city without the help of a maps service on your phone or car. Even for experienced cab drivers, it is often diffcult to navigate through city traffic, so let us not even discuss the plight of rookie drivers. It is easy to understand that modeling maps is central to the effectiveness of any simulation software. Self-driving start-ups are investing heavily in developing HD maps that explain the fine details of the environment around the vehicle. Putting it simply, the more realistic the maps look, the better the software.</p>
+<p>Similarly, modeling maps is central to the effectiveness of CATS. The most important requirements/features of maps are:</p>
+<ul class="simple">
+<li>Maps should represent an urban traffic scenario, along with the landscape of the city</li>
+<li>Maps require a detailed modeling of roads, intersections, lanes, etc</li>
+<li>Maps should encode the topological connections between roads, for routing</li>
+<li>Specific to CATS, maps also store the spatial details of all the vehicles in the simulation.</li>
+</ul>
 </div>
 <div class="section" id="module-core.lib.maps.map">
-<span id="core-lib-maps-map-module"></span><h2>core.lib.maps.map module<a class="headerlink" href="#module-core.lib.maps.map" title="Permalink to this headline">¶</a></h2>
-<p>The maps modules consists of several classes that cater to different details of the urban landscape.</p>
-<p>Map module is central to the effectiveness of CATS. The most important requirements/features of maps are</p>
-<blockquote>
-<div><ul class="simple">
+<span id="maps-map-module"></span><h2>maps.map module<a class="headerlink" href="#module-core.lib.maps.map" title="Permalink to this headline">¶</a></h2>
+<p>The maps modules consists of several classes that cater to different details of the urban landscape. Map module is central to the effectiveness of CATS. The most important requirements/features of maps are</p>
+<ul class="simple">
 <li>Maps should represent an urban traffic scenario, along with the landscape of the city.</li>
 <li>Maps require a detailed modeling of roads, intersections, lanes, etc.</li>
 <li>Maps should encode the topological connections between roads, for routing.</li>
 <li>Specific to CATS, maps also store the spatial details of all the vehicles in the simulation.</li>
 </ul>
-</div></blockquote>
 <dl class="class">
 <dt id="core.lib.maps.map.Intersection">
 <em class="property">class </em><code class="descclassname">core.lib.maps.map.</code><code class="descname">Intersection</code><span class="sig-paren">(</span><em>point_x</em>, <em>point_y</em>, <em>osmid=None</em>, <em>traffic_controller=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Characterizes a traffic junction.</p>
+<dd><p>Characterizes a traffic junction.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.Intersection.__x">
 <code class="descname">__x</code><a class="headerlink" href="#core.lib.maps.map.Intersection.__x" title="Permalink to this definition">¶</a></dt>
@@ -94,84 +115,61 @@
 
 <p class="rubric">Notes</p>
 <p>An intersection contains multiple Nodes which are the end points of the roads leading upto the intersection. An intersection is initialized with 0 Nodes. Nodes are added later while initializing a map using <cite>add_node</cite> method. The present implementation assumes the following.</p>
-<blockquote>
-<div><ul class="simple">
+<ul class="simple">
 <li>Fixed number of nodes. Currently only support a ‘+’ kind of intersection (a four way junction)</li>
 <li>Intersections are axis aligned.</li>
 </ul>
-</div></blockquote>
+<p>todo: Extend to dynamically create an intersection with variable number of roads coming in (different shapes)</p>
 <dl class="method">
 <dt id="core.lib.maps.map.Intersection.add_node">
 <code class="descname">add_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.add_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Adds node object to an Intersection instance.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>object</em>) – node object</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.Intersection.get_grade">
 <code class="descname">get_grade</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.get_grade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Intersection.get_no_of_nodes">
-<code class="descname">get_no_of_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.get_no_of_nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Intersection.get_node_by_id">
-<code class="descname">get_node_by_id</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.get_node_by_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __grade attribute.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.Intersection.get_nodes">
 <code class="descname">get_nodes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.get_nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __nodes attribute.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.Intersection.get_osmid">
 <code class="descname">get_osmid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.get_osmid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __osmid attribute.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.Intersection.get_x">
 <code class="descname">get_x</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.get_x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __x attribute.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.Intersection.get_y">
 <code class="descname">get_y</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.get_y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Intersection.set_grade">
-<code class="descname">set_grade</code><span class="sig-paren">(</span><em>g</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.set_grade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Intersection.set_osmid">
-<code class="descname">set_osmid</code><span class="sig-paren">(</span><em>osmid</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.set_osmid" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Intersection.set_x">
-<code class="descname">set_x</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.set_x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Intersection.set_y">
-<code class="descname">set_y</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Intersection.set_y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Intersection.traffic_controller">
-<code class="descname">traffic_controller</code><a class="headerlink" href="#core.lib.maps.map.Intersection.traffic_controller" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __y attribute.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="core.lib.maps.map.Lane">
 <em class="property">class </em><code class="descclassname">core.lib.maps.map.</code><code class="descname">Lane</code><span class="sig-paren">(</span><em>lane_no</em>, <em>road</em>, <em>lane_polygon</em>, <em>lane_center</em>, <em>speed_limit=None</em>, <em>_type=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Lane" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Characterizes a lane that is a part of a Road.</p>
+<dd><p>Characterizes a lane that is a part of a Road.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.Lane.__vehicles">
 <code class="descname">__vehicles</code><a class="headerlink" href="#core.lib.maps.map.Lane.__vehicles" title="Permalink to this definition">¶</a></dt>
@@ -248,31 +246,6 @@
 <p><em>Current Implementation (to be deprecated):</em> Provides the bare minimum information such as lane_center (used to calculated distance from lane center), lane_no, speed_limit etc. Has no particularly important role other than the attributes defined.</p>
 <p>Future Implementation (under development):* The vehicles are store on the lanes. If a vehicle changes a lane, a method on lanes is called to update the vehicles on the source lane and the destination lane. The vehicles on a lane are stored in a linked list in decreasing order of distance from the end of the road.</p>
 <dl class="method">
-<dt id="core.lib.maps.map.Lane.get_vehicles">
-<code class="descname">get_vehicles</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Lane.get_vehicles" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Lane.lane_center">
-<code class="descname">lane_center</code><a class="headerlink" href="#core.lib.maps.map.Lane.lane_center" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Lane.lane_center_xy">
-<code class="descname">lane_center_xy</code><a class="headerlink" href="#core.lib.maps.map.Lane.lane_center_xy" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Lane.lane_no">
-<code class="descname">lane_no</code><a class="headerlink" href="#core.lib.maps.map.Lane.lane_no" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Lane.lane_polygon">
-<code class="descname">lane_polygon</code><a class="headerlink" href="#core.lib.maps.map.Lane.lane_polygon" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="core.lib.maps.map.Lane.remove_vehicle">
 <code class="descname">remove_vehicle</code><span class="sig-paren">(</span><em>vehicle</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Lane.remove_vehicle" title="Permalink to this definition">¶</a></dt>
 <dd><p class="rubric">Notes</p>
@@ -283,29 +256,20 @@
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>vehicle</strong> (<em>object</em>) – Vehicle that needs to be removed from the lane</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal notranslate"><span class="pre">ValueError</span></code> – Vehicle not found in the lane</td>
+<tr class="field-even field"><th class="field-name">Raises:</th><td class="field-body"><code class="xref py py-exc docutils literal"><span class="pre">ValueError</span></code> – Vehicle not found in the lane</td>
 </tr>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Lane.road">
-<code class="descname">road</code><a class="headerlink" href="#core.lib.maps.map.Lane.road" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Lane.speed_limit">
-<code class="descname">speed_limit</code><a class="headerlink" href="#core.lib.maps.map.Lane.speed_limit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="core.lib.maps.map.Node">
 <em class="property">class </em><code class="descclassname">core.lib.maps.map.</code><code class="descname">Node</code><span class="sig-paren">(</span><em>point_x</em>, <em>point_y</em>, <em>incoming</em>, <em>_id=None</em>, <em>parent=None</em>, <em>traffic_signal=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Class determining the data structure of a Node (end points of a Road).</p>
+<dd><p>Class determining the data structure of a Node (end points of a Road).</p>
+<p class="rubric">Notes</p>
+<p>This class is similar to a (class) SubNode, except that (class) Node is an endpoint of a (class) Road and usually is a bound to (class) Intersection.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.Node.__x">
 <code class="descname">__x</code><a class="headerlink" href="#core.lib.maps.map.Node.__x" title="Permalink to this definition">¶</a></dt>
@@ -348,86 +312,50 @@
 <dd><p><em>bool</em> – If the Node ends at an intersection (it is incoming into the intersection)</p>
 </dd></dl>
 
-<p class="rubric">Notes</p>
-<p>This class is similar to a (class) SubNode, except that (class) Node is an endpoint of a (class) Road and
-usually is a bound to (class) Intersection.</p>
-<dl class="method">
-<dt id="core.lib.maps.map.Node.get_grade">
-<code class="descname">get_grade</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node.get_grade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Node.get_id">
-<code class="descname">get_id</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node.get_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="attribute">
 <dt id="core.lib.maps.map.Node.id">
 <code class="descname">id</code><a class="headerlink" href="#core.lib.maps.map.Node.id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Node.is_incoming">
-<code class="descname">is_incoming</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node.is_incoming" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __id attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.Node.parent">
 <code class="descname">parent</code><a class="headerlink" href="#core.lib.maps.map.Node.parent" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Node.set_grade">
-<code class="descname">set_grade</code><span class="sig-paren">(</span><em>g</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node.set_grade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Node.set_id">
-<code class="descname">set_id</code><span class="sig-paren">(</span><em>_id</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node.set_id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Node.set_x">
-<code class="descname">set_x</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node.set_x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.Node.set_y">
-<code class="descname">set_y</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Node.set_y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __parent attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.Node.traffic_signals">
 <code class="descname">traffic_signals</code><a class="headerlink" href="#core.lib.maps.map.Node.traffic_signals" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __traffic_signals attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.Node.x">
 <code class="descname">x</code><a class="headerlink" href="#core.lib.maps.map.Node.x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __x attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.Node.y">
 <code class="descname">y</code><a class="headerlink" href="#core.lib.maps.map.Node.y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __y attribute.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="core.lib.maps.map.Road">
 <em class="property">class </em><code class="descclassname">core.lib.maps.map.</code><code class="descname">Road</code><span class="sig-paren">(</span><em>start_node</em>, <em>end_node</em>, <em>line_string</em>, <em>_type='straight'</em>, <em>no_of_lanes=3</em>, <em>name=None</em>, <em>osmid=None</em>, <em>lane_width=5</em>, <em>speed_limit=40</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Road" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Characterizes the Road in a TrafficGraph.</p>
+<dd><p>Characterizes the Road in a TrafficGraph.</p>
 <p>The Road is determined by a start node, an end node, a RoadString (for the curvature/ linestring). It has attributes like speed limit, number of lanes etc that are specified while constructing the Road, and attributes like width, polygons that are calculated.</p>
 <p class="rubric">Notes</p>
-<p>There are two types of roads,
-1) normal road that connects two nodes (which are on two different intersections),
-2) turn road that connects two nodes within the same intersection. In this setting, the vehicles can be
-simulated on a micro scale within an intersection (traffic junction which is usually atleast 20 meters in
-diameter). By considering two types of roads, there are several edge cases on the vehicle class that need to be
-taken care of when trying to update the state of the vehicle. Also, the current implementation is only for a
-plus shaped intersection, but when there are various types of intersections, care must be taken in assigning
-the turn roads.</p>
+<p>There are two types of roads:</p>
+<ol class="arabic simple">
+<li>normal road that connects two nodes (which are on two different intersections),</li>
+<li>turn road that connects two nodes within the same intersection. In this setting, the vehicles can be</li>
+</ol>
+<p>simulated on a micro scale within an intersection (traffic junction which is usually at least 20 meters in diameter). By considering two types of roads, there are several edge cases on the vehicle class that need to be taken care of when trying to update the state of the vehicle. Also, the current implementation is only for a plus shaped intersection, but when there are various types of intersections, care must be taken in assigning the turn roads.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.Road.__start_node">
 <code class="descname">__start_node</code><a class="headerlink" href="#core.lib.maps.map.Road.__start_node" title="Permalink to this definition">¶</a></dt>
@@ -569,7 +497,8 @@ the turn roads.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.Road.__val">
 <code class="descname">__val</code><a class="headerlink" href="#core.lib.maps.map.Road.__val" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p><em>int</em></p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.Road.__min_bounding_box">
@@ -584,23 +513,14 @@ the turn roads.</p>
 </dd></dl>
 
 <dl class="attribute">
-<dt id="core.lib.maps.map.Road.avg_time">
-<code class="descname">avg_time</code><a class="headerlink" href="#core.lib.maps.map.Road.avg_time" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
 <dt id="core.lib.maps.map.Road.bounding_polygon">
 <code class="descname">bounding_polygon</code><a class="headerlink" href="#core.lib.maps.map.Road.bounding_polygon" title="Permalink to this definition">¶</a></dt>
-<dd><dl class="docutils">
-<dt><em>Notes</em> –     The current implementation only considers straight roads (roads which are not curved). Future</dt>
-<dd>implementations must modify this method to take the curvature/turns into consideration.
-Note that the return type also changes when curved roads are considered.</dd>
-</dl>
+<dd><p><em>Notes</em> –     The current implementation only considers straight roads (roads which are not curved). Future implementations must modify this method to take the curvature/turns into consideration. Note that the return type also changes when curved roads are considered.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">of the points (of the polygon)</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of the points of the polygon</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
@@ -608,15 +528,10 @@ Note that the return type also changes when curved roads are considered.</dd>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.end_node">
-<code class="descname">end_node</code><a class="headerlink" href="#core.lib.maps.map.Road.end_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="core.lib.maps.map.Road.get_distance_from_road_center">
 <code class="descname">get_distance_from_road_center</code><span class="sig-paren">(</span><em>x</em>, <em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Road.get_distance_from_road_center" title="Permalink to this definition">¶</a></dt>
-<dd><p>calculates the distance from the center of the road using the __line_string</p>
+<dd><p>Calculates the distance from the center of the road using the __line_string.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -667,46 +582,6 @@ and calculate the distance (by using the line string in that segment).</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.heading">
-<code class="descname">heading</code><a class="headerlink" href="#core.lib.maps.map.Road.heading" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.lane_width">
-<code class="descname">lane_width</code><a class="headerlink" href="#core.lib.maps.map.Road.lane_width" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.lanes">
-<code class="descname">lanes</code><a class="headerlink" href="#core.lib.maps.map.Road.lanes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.left_line_string">
-<code class="descname">left_line_string</code><a class="headerlink" href="#core.lib.maps.map.Road.left_line_string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.line_string">
-<code class="descname">line_string</code><a class="headerlink" href="#core.lib.maps.map.Road.line_string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.min_bounding_box">
-<code class="descname">min_bounding_box</code><a class="headerlink" href="#core.lib.maps.map.Road.min_bounding_box" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.name">
-<code class="descname">name</code><a class="headerlink" href="#core.lib.maps.map.Road.name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.no_of_lanes">
-<code class="descname">no_of_lanes</code><a class="headerlink" href="#core.lib.maps.map.Road.no_of_lanes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 <dl class="method">
 <dt id="core.lib.maps.map.Road.reset_traffic">
 <code class="descname">reset_traffic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.Road.reset_traffic" title="Permalink to this definition">¶</a></dt>
@@ -715,31 +590,6 @@ traffic attributes.</p>
 <p class="rubric">Notes</p>
 <p>Future research may include a time series data of the traffic attributes.</p>
 </dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.road_length">
-<code class="descname">road_length</code><a class="headerlink" href="#core.lib.maps.map.Road.road_length" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.road_string">
-<code class="descname">road_string</code><a class="headerlink" href="#core.lib.maps.map.Road.road_string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.speed_limit">
-<code class="descname">speed_limit</code><a class="headerlink" href="#core.lib.maps.map.Road.speed_limit" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.start_node">
-<code class="descname">start_node</code><a class="headerlink" href="#core.lib.maps.map.Road.start_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.type">
-<code class="descname">type</code><a class="headerlink" href="#core.lib.maps.map.Road.type" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.Road.update_traffic_from_vehicle_data">
@@ -757,23 +607,12 @@ method to update the attributes of the road on which it is travelling.</p>
 </table>
 </dd></dl>
 
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.val">
-<code class="descname">val</code><a class="headerlink" href="#core.lib.maps.map.Road.val" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.maps.map.Road.width">
-<code class="descname">width</code><a class="headerlink" href="#core.lib.maps.map.Road.width" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
 </dd></dl>
 
 <dl class="class">
 <dt id="core.lib.maps.map.RoadString">
 <em class="property">class </em><code class="descclassname">core.lib.maps.map.</code><code class="descname">RoadString</code><span class="sig-paren">(</span><em>line_string</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.RoadString" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Encapsulates all the information about the road.</p>
+<dd><p>Encapsulates all the information about the road.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.RoadString.__sub_nodes">
 <code class="descname">__sub_nodes</code><a class="headerlink" href="#core.lib.maps.map.RoadString.__sub_nodes" title="Permalink to this definition">¶</a></dt>
@@ -819,7 +658,7 @@ method to update the attributes of the road on which it is travelling.</p>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(1, -slope, -intercept) where the equation of line is <code class="docutils literal notranslate"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">slope</span> <span class="pre">*</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">intercept</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(1, -slope, -intercept) where the equation of line is <code class="docutils literal"><span class="pre">y</span> <span class="pre">+</span> <span class="pre">slope</span> <span class="pre">*</span> <span class="pre">x</span> <span class="pre">+</span> <span class="pre">intercept</span> <span class="pre">=</span> <span class="pre">0</span></code></p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
@@ -832,27 +671,32 @@ method to update the attributes of the road on which it is travelling.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.RoadString.line_string">
 <code class="descname">line_string</code><a class="headerlink" href="#core.lib.maps.map.RoadString.line_string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __line_string attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.RoadString.no_sub_nodes">
 <code class="descname">no_sub_nodes</code><a class="headerlink" href="#core.lib.maps.map.RoadString.no_sub_nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __no_sub_nodes attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.RoadString.perpendicular_segments">
 <code class="descname">perpendicular_segments</code><a class="headerlink" href="#core.lib.maps.map.RoadString.perpendicular_segments" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __perpendicular_segments attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.RoadString.segment_headings">
 <code class="descname">segment_headings</code><a class="headerlink" href="#core.lib.maps.map.RoadString.segment_headings" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __segment_headings attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.RoadString.segment_lengths">
 <code class="descname">segment_lengths</code><a class="headerlink" href="#core.lib.maps.map.RoadString.segment_lengths" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __length_segments attribute.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.RoadString.set_attributes">
@@ -871,56 +715,94 @@ method to update the attributes of the road on which it is travelling.</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.RoadString.subnodes">
 <code class="descname">subnodes</code><a class="headerlink" href="#core.lib.maps.map.RoadString.subnodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __sub_nodes attribute.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="core.lib.maps.map.SubNode">
 <em class="property">class </em><code class="descclassname">core.lib.maps.map.</code><code class="descname">SubNode</code><span class="sig-paren">(</span><em>point_x</em>, <em>point_y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.SubNode" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Characterizes points of a line string along a curved road.</p>
+<dd><p>Characterizes points of a line string along a curved road.</p>
+<dl class="attribute">
+<dt id="core.lib.maps.map.SubNode.__x">
+<code class="descname">__x</code><a class="headerlink" href="#core.lib.maps.map.SubNode.__x" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – x coordinate</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.maps.map.SubNode.__y">
+<code class="descname">__y</code><a class="headerlink" href="#core.lib.maps.map.SubNode.__y" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – y coordinate</p>
+</dd></dl>
+
 <dl class="method">
 <dt id="core.lib.maps.map.SubNode.get_grade">
 <code class="descname">get_grade</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.SubNode.get_grade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __grade attribute.</p>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.SubNode.set_grade">
 <code class="descname">set_grade</code><span class="sig-paren">(</span><em>g</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.SubNode.set_grade" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the value of __grade attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>g</strong> (<em>float</em>) – value of __grade attribute</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.SubNode.set_x">
 <code class="descname">set_x</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.SubNode.set_x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the value of __x attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>x</strong> (<em>float</em>) – value of __x attribute</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.SubNode.set_y">
 <code class="descname">set_y</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.SubNode.set_y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Sets the value of __y attribute.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>y</strong> (<em>float</em>) – value of __y attribute</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.SubNode.x">
 <code class="descname">x</code><a class="headerlink" href="#core.lib.maps.map.SubNode.x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __x attribute.</p>
+</dd></dl>
 
 <dl class="attribute">
 <dt id="core.lib.maps.map.SubNode.y">
 <code class="descname">y</code><a class="headerlink" href="#core.lib.maps.map.SubNode.y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Getter method for __y attribute.</p>
+</dd></dl>
 
 </dd></dl>
 
 <dl class="class">
 <dt id="core.lib.maps.map.TrafficGraph">
 <em class="property">class </em><code class="descclassname">core.lib.maps.map.</code><code class="descname">TrafficGraph</code><span class="sig-paren">(</span><em>simulation</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Comprises of and defines the topological connections between the other classes defined in map module.</p>
-<p>TrafficGraph defines the landscape, the connections between roads, and everything related to the map used in the
-simulation. TrafficGraph currently uses a graph data structure to store the topological connections, and an
-rtree data structure to store the spatial information related to the static objects (nodes, intersections, roads)
-and mobile objects (such as the vehicles).</p>
+<dd><p>Comprises of and defines the topological connections between the other classes defined in map module.</p>
+<p>TrafficGraph defines the landscape, the connections between roads, and everything related to the map used in the simulation. TrafficGraph currently uses a graph data structure to store the topological connections, and an rtree data structure to store the spatial information related to the static objects (nodes, intersections, roads) and mobile objects (such as the vehicles).</p>
 <dl class="attribute">
 <dt id="core.lib.maps.map.TrafficGraph.__graph">
 <code class="descname">__graph</code><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.__graph" title="Permalink to this definition">¶</a></dt>
@@ -1034,11 +916,6 @@ and mobile objects (such as the vehicles).</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="core.lib.maps.map.TrafficGraph.get_adj_nodes">
-<code class="descname">get_adj_nodes</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_adj_nodes" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_all_nodes">
 <code class="descname">get_all_nodes</code><span class="sig-paren">(</span><em>objects=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_all_nodes" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns all the nodes stored in the graph.</p>
@@ -1062,7 +939,7 @@ and mobile objects (such as the vehicles).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">list of all the vehicle objects</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of all the vehicle objects</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
@@ -1092,13 +969,23 @@ and mobile objects (such as the vehicles).</p>
 <dt id="core.lib.maps.map.TrafficGraph.get_edges">
 <code class="descname">get_edges</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_edges" title="Permalink to this definition">¶</a></dt>
 <dd><p>Returns a EdgeView containing edge. For attributes call getEdgeAttr(edge)</p>
-<p>Returns:</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of edge objects</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
+</tr>
+</tbody>
+</table>
 </dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_incoming_edges">
 <code class="descname">get_incoming_edges</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_incoming_edges" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Returns a list of edges that come into the give node.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -1113,19 +1000,10 @@ and mobile objects (such as the vehicles).</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="core.lib.maps.map.TrafficGraph.get_intersections">
-<code class="descname">get_intersections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_intersections" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.TrafficGraph.get_intersections_table">
-<code class="descname">get_intersections_table</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_intersections_table" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_nearest_nodes">
 <code class="descname">get_nearest_nodes</code><span class="sig-paren">(</span><em>bounding_box</em>, <em>number</em>, <em>generator=True</em>, <em>objects=False</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_nearest_nodes" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Returns the give number of nodes closest to a bounding box.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -1180,7 +1058,7 @@ and mobile objects (such as the vehicles).</p>
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_node_attribute">
 <code class="descname">get_node_attribute</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_node_attribute" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns a node object given an id</p>
+<dd><p>Returns a node object given an id.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1194,11 +1072,6 @@ and mobile objects (such as the vehicles).</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.TrafficGraph.get_node_count">
-<code class="descname">get_node_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_node_count" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_nodes_by_bounding_box">
@@ -1230,13 +1103,14 @@ and mobile objects (such as the vehicles).</p>
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_out_edges">
 <code class="descname">get_out_edges</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_out_edges" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Returns a list of edges that come out of the given node.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>node</strong> (<em>int</em>) – id of the node</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of edges (which is a tuple of nodes) that come into the given node</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">list of edges (which is a tuple of nodes) that come out of the given node</td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
@@ -1247,7 +1121,8 @@ and mobile objects (such as the vehicles).</p>
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_road">
 <code class="descname">get_road</code><span class="sig-paren">(</span><em>edge</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_road" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Returns Road object on the given edge.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -1262,14 +1137,10 @@ and mobile objects (such as the vehicles).</p>
 </dd></dl>
 
 <dl class="method">
-<dt id="core.lib.maps.map.TrafficGraph.get_road_network_bbox">
-<code class="descname">get_road_network_bbox</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_road_network_bbox" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_roads">
 <code class="descname">get_roads</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_roads" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Returns a list of Road objects.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -1313,7 +1184,7 @@ and mobile objects (such as the vehicles).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">of Node objects with zero outgoing edges</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of Node objects with zero outgoing edges</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
@@ -1328,7 +1199,7 @@ and mobile objects (such as the vehicles).</p>
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">of Node objects with 0 incoming edges</td>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a list of Node objects with 0 incoming edges</td>
 </tr>
 <tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">list</td>
 </tr>
@@ -1353,16 +1224,6 @@ and mobile objects (such as the vehicles).</p>
 </tbody>
 </table>
 </dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.TrafficGraph.get_vehicle_count">
-<code class="descname">get_vehicle_count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_vehicle_count" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.maps.map.TrafficGraph.get_vehicle_tree_bbox">
-<code class="descname">get_vehicle_tree_bbox</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.get_vehicle_tree_bbox" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
 
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.get_vehicles">
@@ -1408,7 +1269,7 @@ and mobile objects (such as the vehicles).</p>
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.remove_vehicle">
 <code class="descname">remove_vehicle</code><span class="sig-paren">(</span><em>vehicle</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.remove_vehicle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Removes the given vehicle id from the __vehicles_table</p>
+<dd><p>Removes the given vehicle id from the __vehicles_table.</p>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -1422,7 +1283,8 @@ and mobile objects (such as the vehicles).</p>
 <dl class="method">
 <dt id="core.lib.maps.map.TrafficGraph.update_road_attributes">
 <code class="descname">update_road_attributes</code><span class="sig-paren">(</span><em>road</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.maps.map.TrafficGraph.update_road_attributes" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
+<dd><p>Updates the Road object.</p>
+<table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
@@ -1583,12 +1445,6 @@ to be added to the intersection.</p>
 </dd></dl>
 
 </div>
-<div class="section" id="module-core.lib.maps.utils">
-<span id="core-lib-maps-utils-module"></span><h2>core.lib.maps.utils module<a class="headerlink" href="#module-core.lib.maps.utils" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-core.lib.maps">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-core.lib.maps" title="Permalink to this headline">¶</a></h2>
-</div>
 </div>
 
 
@@ -1599,15 +1455,19 @@ to be added to the intersection.</p>
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">core.lib.maps package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-core.lib.maps.map">core.lib.maps.map module</a></li>
-<li><a class="reference internal" href="#module-core.lib.maps.utils">core.lib.maps.utils module</a></li>
-<li><a class="reference internal" href="#module-core.lib.maps">Module contents</a></li>
+<li><a class="reference internal" href="#">maps package</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#module-core.lib.maps.map">maps.map module</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.lib.infrastructure.html"
+                        title="previous chapter">infrastructure package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.lib.physics.html"
+                        title="next chapter">physics package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -1617,14 +1477,12 @@ to be added to the intersection.</p>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -1640,12 +1498,18 @@ to be added to the intersection.</p>
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.physics.html" title="physics package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.lib.infrastructure.html" title="infrastructure package"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Ohio State University.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

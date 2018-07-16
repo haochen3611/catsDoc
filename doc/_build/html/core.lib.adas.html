@@ -4,18 +4,29 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>core.lib.adas package &#8212; CATS  documentation</title>
+    <title>adas package &#8212; CATS  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="driver package" href="core.lib.driver.html" />
+    <link rel="prev" title="License" href="License.html" /> 
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -25,6 +36,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.driver.html" title="driver package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="License.html" title="License"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -34,18 +51,19 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="core-lib-adas-package">
-<h1>core.lib.adas package<a class="headerlink" href="#core-lib-adas-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="adas-package">
+<h1>adas package<a class="headerlink" href="#adas-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>ADAS stands for Advanced Driver Assistance System. This module takes in a command from the decision module and accordingly outputs a control signal which comprises of steering angle, gas, and brake.  ADAS module has the two classes Longitudinal Control, which  contains methods to output a longitudinal control (i.e. gas, brake) in different scenarios such as cruise control mode, lane change mode, turning at an intersection, stopping at a red signal etc, and LateralControl, which contains methods to output a lateral control signal (i.e. steering angle) in scenarios such as lane change, turning at an intersection, lane centering etc.</p>
+<p>In either of the above classes, the methods use a very simple PID controller which use a reference velocity or distance (in longitudinal control) and a reference heading direction (in lateral control) for generating a control signal so that the vehicles next state closely matches the reference values used. Since the initial goal was to have a basic frame work to integrate all the modules, no sophisticated control models were developed. As this software is modular, it is fairly straightforward to improve upon the implemented control algorithms.</p>
 </div>
 <div class="section" id="module-core.lib.adas.driving_model">
-<span id="core-lib-adas-driving-model-module"></span><h2>core.lib.adas.driving_model module<a class="headerlink" href="#module-core.lib.adas.driving_model" title="Permalink to this headline">¶</a></h2>
+<span id="adas-driving-model-module"></span><h2>adas.driving_model module<a class="headerlink" href="#module-core.lib.adas.driving_model" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="core.lib.adas.driving_model.ADAS">
 <em class="property">class </em><code class="descclassname">core.lib.adas.driving_model.</code><code class="descname">ADAS</code><span class="sig-paren">(</span><em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.driving_model.ADAS" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Provides driver assistance functions</p>
+<dd><p>Provides driver assistance functions</p>
 <dl class="attribute">
 <dt id="core.lib.adas.driving_model.ADAS.driver">
 <code class="descname">driver</code><a class="headerlink" href="#core.lib.adas.driving_model.ADAS.driver" title="Permalink to this definition">¶</a></dt>
@@ -74,20 +92,41 @@
 
 </div>
 <div class="section" id="module-core.lib.adas.intersection_model">
-<span id="core-lib-adas-intersection-model-module"></span><h2>core.lib.adas.intersection_model module<a class="headerlink" href="#module-core.lib.adas.intersection_model" title="Permalink to this headline">¶</a></h2>
+<span id="adas-intersection-model-module"></span><h2>adas.intersection_model module<a class="headerlink" href="#module-core.lib.adas.intersection_model" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="core.lib.adas.intersection_model.follow_traffic_signals">
 <code class="descclassname">core.lib.adas.intersection_model.</code><code class="descname">follow_traffic_signals</code><span class="sig-paren">(</span><em>speed</em>, <em>speed_limit</em>, <em>distance_from_end_node</em>, <em>distance_from_front_car</em>, <em>traffic_signal_state</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.intersection_model.follow_traffic_signals" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Defines the behavior of a vehicle near an intersection.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>speed</strong> (<em>float</em>) – speed of the vehicle</li>
+<li><strong>speed_limit</strong> (<em>float</em>) – as determined by the road, traffic rules</li>
+<li><strong>distance_from_end_node</strong> (<em>float</em>) – distance from entrance of an intersection</li>
+<li><strong>distance_from_front_car</strong> (<em>float</em>) – distance from front vehicle</li>
+<li><strong>traffic_signal_state</strong> (<em>tuple</em>) – traffic light color and remaining time before changing color</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(steering_angle, gas, brake)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </div>
 <div class="section" id="module-core.lib.adas.lane_center">
-<span id="core-lib-adas-lane-center-module"></span><h2>core.lib.adas.lane_center module<a class="headerlink" href="#module-core.lib.adas.lane_center" title="Permalink to this headline">¶</a></h2>
+<span id="adas-lane-center-module"></span><h2>adas.lane_center module<a class="headerlink" href="#module-core.lib.adas.lane_center" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="core.lib.adas.lane_center.LaneCenter">
 <em class="property">class </em><code class="descclassname">core.lib.adas.lane_center.</code><code class="descname">LaneCenter</code><a class="headerlink" href="#core.lib.adas.lane_center.LaneCenter" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Contains two methods that keep a autonomous vehicle driving in the center of the lane.</p>
+<dd><p>Contains two methods that keep an autonomous vehicle driving in the center of the lane.</p>
 <dl class="method">
 <dt id="core.lib.adas.lane_center.LaneCenter.control_steering">
 <code class="descname">control_steering</code><span class="sig-paren">(</span><em>sensor_reading</em>, <em>lane_change_flag</em>, <em>lane_center_dy_flag</em>, <em>heading_control_flag</em>, <em>road_width</em>, <em>road_heading</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.lane_center.LaneCenter.control_steering" title="Permalink to this definition">¶</a></dt>
@@ -148,36 +187,70 @@ controller acts at a time, and selects a reference heading which is maintained u
 
 </div>
 <div class="section" id="module-core.lib.adas.lane_change">
-<span id="core-lib-adas-lane-change-module"></span><h2>core.lib.adas.lane_change module<a class="headerlink" href="#module-core.lib.adas.lane_change" title="Permalink to this headline">¶</a></h2>
+<span id="adas-lane-change-module"></span><h2>adas.lane_change module<a class="headerlink" href="#module-core.lib.adas.lane_change" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="core.lib.adas.lane_change.LaneChange">
 <em class="property">class </em><code class="descclassname">core.lib.adas.lane_change.</code><code class="descname">LaneChange</code><a class="headerlink" href="#core.lib.adas.lane_change.LaneChange" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Contains methods that control an autonomous vehicle to change lane.</p>
 <dl class="method">
 <dt id="core.lib.adas.lane_change.LaneChange.can_change_lane">
 <code class="descname">can_change_lane</code><span class="sig-paren">(</span><em>visible_cars</em>, <em>direction</em>, <em>lane_no</em>, <em>max_lane_no</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.lane_change.LaneChange.can_change_lane" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Determines whether a situation is suitable for lane changing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>visible_cars</strong> (<em>dict</em>) – contains vehicles objects within certain distance and their spatial relation to the traget car</li>
+<li><strong>direction</strong> (<em>String</em>) – the direction to be examined</li>
+<li><strong>lane_on</strong> (<em>int</em>) – the index of a lane</li>
+<li><strong>max_lane_no</strong> (<em>int</em>) – the maximum index of all lanes on the road</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(String, String)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 <dl class="method">
 <dt id="core.lib.adas.lane_change.LaneChange.change_lane">
 <code class="descname">change_lane</code><span class="sig-paren">(</span><em>car</em>, <em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.lane_change.LaneChange.change_lane" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.adas.lane_change.LaneChange.lane_change_assist">
-<code class="descname">lane_change_assist</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.lane_change.LaneChange.lane_change_assist" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
+<dd><p>Performs the action of lane changing.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>car</strong> (<em>object</em>) – vehicle object</li>
+<li><strong>direction</strong> (<em>String</em>) – the direction of the vehicle is changing toward</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(car.x, car.y)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
 
 </dd></dl>
 
 </div>
 <div class="section" id="module-core.lib.adas.longitudinal_contrl">
-<span id="core-lib-adas-longitudinal-contrl-module"></span><h2>core.lib.adas.longitudinal_contrl module<a class="headerlink" href="#module-core.lib.adas.longitudinal_contrl" title="Permalink to this headline">¶</a></h2>
+<span id="adas-longitudinal-contrl-module"></span><h2>adas.longitudinal_contrl module<a class="headerlink" href="#module-core.lib.adas.longitudinal_contrl" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="core.lib.adas.longitudinal_contrl.LongitudinalControl">
 <em class="property">class </em><code class="descclassname">core.lib.adas.longitudinal_contrl.</code><code class="descname">LongitudinalControl</code><span class="sig-paren">(</span><em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.longitudinal_contrl.LongitudinalControl" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<p>Controls the longitudinal movement of the vehicle by controlling gas and brake.</p>
+<dd><p>Controls the longitudinal movement of the vehicle by controlling gas and brake.</p>
 <dl class="attribute">
 <dt id="core.lib.adas.longitudinal_contrl.LongitudinalControl.driver">
 <code class="descname">driver</code><a class="headerlink" href="#core.lib.adas.longitudinal_contrl.LongitudinalControl.driver" title="Permalink to this definition">¶</a></dt>
@@ -193,12 +266,12 @@ controller acts at a time, and selects a reference heading which is maintained u
 <col class="field-body" />
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>len_visible_cars</strong> (<em>int</em>) – # of vehicles in front within a certain distance</li>
+<li><strong>len_visible_cars</strong> (<em>int</em>) – number of vehicles in front within a certain distance</li>
 <li><strong>speed</strong> (<em>float</em>) – speed of the vehicle</li>
 <li><strong>speed_limit</strong> (<em>float</em>) – speed_limit of the road</li>
-<li><strong>distance_from_front_car</strong> (<em>float</em>) – </li>
-<li><strong>distance_from_end_node</strong> (<em>float</em>) – </li>
-<li><strong>traffic_signal_state</strong> (<em>tuple</em>) – </li>
+<li><strong>distance_from_front_car</strong> (<em>float</em>) – distance from front vehicle</li>
+<li><strong>distance_from_end_node</strong> (<em>float</em>) – distance to entrance of an intersection</li>
+<li><strong>traffic_signal_state</strong> (<em>tuple</em>) – traffic light color and remaining time before changing color</li>
 <li><strong>steering_angle</strong> (<em>float</em>) – angle in radians</li>
 <li><strong>gas</strong> (<em>float</em>) – acceleration to give</li>
 <li><strong>brake</strong> (<em>float</em>) – brake to give</li>
@@ -280,7 +353,7 @@ controller acts at a time, and selects a reference heading which is maintained u
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>intersection_traffic</strong> (<em>dict</em>) – with keys as 1,3,5,7 and values as list of vehicles</li>
-<li><strong>len_visible_cars</strong> (<em>int</em>) – # of vehicles in front within a certain distance</li>
+<li><strong>len_visible_cars</strong> (<em>int</em>) – number of vehicles in front within a certain distance</li>
 <li><strong>speed</strong> (<em>float</em>) – speed of the vehicle</li>
 <li><strong>speed_limit</strong> (<em>float</em>) – as determined by traffic rules</li>
 <li><strong>distance_from_front_car</strong> (<em>float</em>) – distance from the vehicle in front</li>
@@ -306,16 +379,17 @@ controller acts at a time, and selects a reference heading which is maintained u
 
 </div>
 <div class="section" id="module-core.lib.adas.rules">
-<span id="core-lib-adas-rules-module"></span><h2>core.lib.adas.rules module<a class="headerlink" href="#module-core.lib.adas.rules" title="Permalink to this headline">¶</a></h2>
+<span id="adas-rules-module"></span><h2>adas.rules module<a class="headerlink" href="#module-core.lib.adas.rules" title="Permalink to this headline">¶</a></h2>
 <dl class="class">
 <dt id="core.lib.adas.rules.Rules">
 <em class="property">class </em><code class="descclassname">core.lib.adas.rules.</code><code class="descname">Rules</code><span class="sig-paren">(</span><em>driver</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.rules.Rules" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Implements the safety rules while a vehicle is in motion.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This class is still under development.</p>
+</div>
 </dd></dl>
 
-</div>
-<div class="section" id="module-core.lib.adas">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-core.lib.adas" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -327,19 +401,24 @@ controller acts at a time, and selects a reference heading which is maintained u
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">core.lib.adas package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-core.lib.adas.driving_model">core.lib.adas.driving_model module</a></li>
-<li><a class="reference internal" href="#module-core.lib.adas.intersection_model">core.lib.adas.intersection_model module</a></li>
-<li><a class="reference internal" href="#module-core.lib.adas.lane_center">core.lib.adas.lane_center module</a></li>
-<li><a class="reference internal" href="#module-core.lib.adas.lane_change">core.lib.adas.lane_change module</a></li>
-<li><a class="reference internal" href="#module-core.lib.adas.longitudinal_contrl">core.lib.adas.longitudinal_contrl module</a></li>
-<li><a class="reference internal" href="#module-core.lib.adas.rules">core.lib.adas.rules module</a></li>
-<li><a class="reference internal" href="#module-core.lib.adas">Module contents</a></li>
+<li><a class="reference internal" href="#">adas package</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#module-core.lib.adas.driving_model">adas.driving_model module</a></li>
+<li><a class="reference internal" href="#module-core.lib.adas.intersection_model">adas.intersection_model module</a></li>
+<li><a class="reference internal" href="#module-core.lib.adas.lane_center">adas.lane_center module</a></li>
+<li><a class="reference internal" href="#module-core.lib.adas.lane_change">adas.lane_change module</a></li>
+<li><a class="reference internal" href="#module-core.lib.adas.longitudinal_contrl">adas.longitudinal_contrl module</a></li>
+<li><a class="reference internal" href="#module-core.lib.adas.rules">adas.rules module</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="License.html"
+                        title="previous chapter">License</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.lib.driver.html"
+                        title="next chapter">driver package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -349,14 +428,12 @@ controller acts at a time, and selects a reference heading which is maintained u
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -372,12 +449,18 @@ controller acts at a time, and selects a reference heading which is maintained u
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.driver.html" title="driver package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="License.html" title="License"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Ohio State University.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

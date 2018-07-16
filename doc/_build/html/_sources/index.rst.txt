@@ -13,7 +13,8 @@ CATS offers several advantages in testing algorithms and logging fine
 grained details in a simulation environment that mimics a real traffic
 scenario.
 
-Contents:
+Contents
+---------
 
 .. toctree::
    :maxdepth: 1
@@ -22,9 +23,16 @@ Contents:
    License
 
 
-Indices and tables
-******************
+Packages and Modules
+--------------------
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+    :maxdepth: 2
+   
+    core.lib.adas
+    core.lib.driver
+    core.lib.infrastructure
+    core.lib.maps
+    core.lib.physics
+    core.lib.sensors
+    core.lib.vehicles

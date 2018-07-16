@@ -4,12 +4,20 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>Install CATS on Ubuntu &#8212; CATS  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
@@ -17,7 +25,8 @@
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="License" href="License.html" />
     <link rel="prev" title="CATS documentation" href="index.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -54,12 +63,12 @@ installed. Right now the installer only supports Debian, Ubuntu, and
 Linux Mint. Make sure you have properly installed <strong>Python 3.5+</strong>.</p>
 <p>You can check your Python version by typing the following command in the
 terminal.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">V</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">python</span> <span class="o">-</span><span class="n">V</span>
 </pre></div>
 </div>
 <p>If you do not have <strong>Python 3.5+</strong> in your system, then type the
 following command in the terminal.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span>
 </pre></div>
 </div>
 </div>
@@ -68,30 +77,28 @@ following command in the terminal.</p>
 <ul>
 <li><p class="first"><strong>First</strong>, download the project repo from <a class="reference external" href="https://github.com/haochen3611/CATS.git">citrus-r-overtake.zip</a>.
 Unzip it into a fold of your choice. Change direction into the
-<code class="docutils literal notranslate"><span class="pre">server</span></code> folder in the termianl by using the following command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">direction</span><span class="o">/</span><span class="n">citrus</span><span class="o">-</span><span class="n">r</span><span class="o">-</span><span class="n">overtake</span><span class="o">/</span><span class="n">server</span>
+<code class="docutils literal"><span class="pre">server</span></code> folder in the termianl by using the following command.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">your</span><span class="o">/</span><span class="n">direction</span><span class="o">/</span><span class="n">citrus</span><span class="o">-</span><span class="n">r</span><span class="o">-</span><span class="n">overtake</span><span class="o">/</span><span class="n">server</span>
 </pre></div>
 </div>
 </li>
-<li><p class="first"><strong>Second</strong>, initial the installer by executing the <code class="docutils literal notranslate"><span class="pre">install.sh</span></code>.
+<li><p class="first"><strong>Second</strong>, initial the installer by executing the <code class="docutils literal"><span class="pre">install.sh</span></code>.
 Type the following command.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="n">install</span><span class="o">.</span><span class="n">sh</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="n">install</span><span class="o">.</span><span class="n">sh</span>
 </pre></div>
 </div>
 <p>You will be asked for password to run the command. Make sure you have
 root access</p>
 </li>
-<li><p class="first"><strong>Third</strong>, log out and log back in for the changes to take effect.</p>
-</li>
-<li><p class="first"><strong>Fourth</strong>, you can start the program by running the
-<code class="docutils literal notranslate"><span class="pre">simulation.py</span></code> in the <code class="docutils literal notranslate"><span class="pre">core</span></code> folder. A simple way to do this is
+<li><p class="first"><strong>Third</strong>, you can start the program by running the
+<code class="docutils literal"><span class="pre">simulation.py</span></code> in the <code class="docutils literal"><span class="pre">core</span></code> folder. A simple way to do this is
 to enter the following commands in the terminal.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">core</span>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">core</span>
 <span class="n">python3</span> <span class="n">simulation</span><span class="o">.</span><span class="n">py</span>
 </pre></div>
 </div>
-<p>Alternatively, you can run <code class="docutils literal notranslate"><span class="pre">simulation.py</span></code> in an IDE of your choice
-by loading the project and executing the <code class="docutils literal notranslate"><span class="pre">simulation.py</span></code>.</p>
+<p>Alternatively, you can run <code class="docutils literal"><span class="pre">simulation.py</span></code> in an IDE of your choice
+by loading the project and executing the <code class="docutils literal"><span class="pre">simulation.py</span></code>.</p>
 </li>
 </ul>
 </div>
@@ -127,14 +134,12 @@ by loading the project and executing the <code class="docutils literal notransla
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -161,7 +166,7 @@ by loading the project and executing the <code class="docutils literal notransla
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Ohio State University.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

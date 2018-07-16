@@ -4,18 +4,27 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>core.lib.physics package &#8212; CATS  documentation</title>
+    <title>physics package &#8212; CATS  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -34,13 +43,15 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="core-lib-physics-package">
-<h1>core.lib.physics package<a class="headerlink" href="#core-lib-physics-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="physics-package">
+<h1>physics package<a class="headerlink" href="#physics-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>This is the module that is responsible for the movement of the vehicle in the simulation. Each vehicle is initialized with a physics module that determines the characteristics such as engine, fuel consumption, vehicle dynamics etc. Currently a front wheel drive model is implemented under vehicle dynamics, and can be extended later to more complex models that include tire force modeling, longitudinal and lateral forces, etc.</p>
+<p>This module takes control signal as the input from the vehicle decision module. The control signal comprises of steering, gas and brake values, which are computed by the ADAS module according to the decision taken. Currently, a simple model is implemented that does not consider all the forces acting on the vehicle, rotation of the tires, etc. Given the control signal, the velocity of the front wheels is modified as <em>v = u + a t</em>, where <em>u</em> is the velocity in the previous time instant, a is the gas or the brake value (negative), and <em>v</em> is the velocity calculated at the current time instant. Using this <em>v</em>, the new new coordinates of the front tires are calculated, and the coordinate of the center of the line joining them is calculated. Using this center and the updated vehicle heading (from the steering signal), the updated location of the center of gravity of the vehicle is calculated, and correspondingly of the entire chasis. The updated coordinates of the vehicle (coordinates of the center of gravity, and the heading of the vehicle) is updated in the simulation so that the display can be updated.</p>
 </div>
 <div class="section" id="module-core.lib.physics.update_car_states">
-<span id="core-lib-physics-update-car-states-module"></span><h2>core.lib.physics.update_car_states module<a class="headerlink" href="#module-core.lib.physics.update_car_states" title="Permalink to this headline">¶</a></h2>
+<span id="physics-update-car-states-module"></span><h2>physics.update_car_states module<a class="headerlink" href="#module-core.lib.physics.update_car_states" title="Permalink to this headline">¶</a></h2>
 <dl class="function">
 <dt id="core.lib.physics.update_car_states.four_wheel_drive">
 <code class="descclassname">core.lib.physics.update_car_states.</code><code class="descname">four_wheel_drive</code><span class="sig-paren">(</span><em>x</em>, <em>y</em>, <em>heading</em>, <em>speed</em>, <em>length</em>, <em>steering_angle</em>, <em>gas</em>, <em>brake</em>, <em>gas_to_acc=1</em>, <em>brake_to_acc=1</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.physics.update_car_states.four_wheel_drive" title="Permalink to this definition">¶</a></dt>
@@ -109,10 +120,7 @@
 
 </div>
 <div class="section" id="module-core.lib.physics.utils">
-<span id="core-lib-physics-utils-module"></span><h2>core.lib.physics.utils module<a class="headerlink" href="#module-core.lib.physics.utils" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-core.lib.physics">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-core.lib.physics" title="Permalink to this headline">¶</a></h2>
+<span id="physics-utils-module"></span><h2>physics.utils module<a class="headerlink" href="#module-core.lib.physics.utils" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -124,11 +132,10 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">core.lib.physics package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-core.lib.physics.update_car_states">core.lib.physics.update_car_states module</a></li>
-<li><a class="reference internal" href="#module-core.lib.physics.utils">core.lib.physics.utils module</a></li>
-<li><a class="reference internal" href="#module-core.lib.physics">Module contents</a></li>
+<li><a class="reference internal" href="#">physics package</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#module-core.lib.physics.update_car_states">physics.update_car_states module</a></li>
+<li><a class="reference internal" href="#module-core.lib.physics.utils">physics.utils module</a></li>
 </ul>
 </li>
 </ul>
@@ -142,14 +149,12 @@
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -170,7 +175,7 @@
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Ohio State University.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

@@ -4,18 +4,28 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>core.lib.vehicles package &#8212; CATS  documentation</title>
+    <title>vehicles package &#8212; CATS  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="sensors package" href="core.lib.sensors.html" /> 
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -25,6 +35,9 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.sensors.html" title="sensors package"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -34,395 +47,30 @@
         <div class="bodywrapper">
           <div class="body" role="main">
             
-  <div class="section" id="core-lib-vehicles-package">
-<h1>core.lib.vehicles package<a class="headerlink" href="#core-lib-vehicles-package" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="submodules">
-<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="vehicles-package">
+<h1>vehicles package<a class="headerlink" href="#vehicles-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Vehicles module provides with classes and methods to create vehicles of different types, and a base Vehicle class that contains all the basic functionalities of any vehicle. We adopted a factory design pattern for the creation of a vehicle wherein, the creation of every Vehicle is forced through a common factory class VehicleFactory which has a build_vehicle method, which takes the vehicle config such as vehicle type, sensors, engine and instantiates the corresponding Vehicle object, and place_on_map which takes a start node and end node of type CATS.maps.Node and places it on the map.</p>
+<p>We implemented different types of vehicles which inherit the base Vehicle class. As of now, we have Car, Truck, Bus and Intelligent Car. The different types of vehicles differ in their physical attributes like length, width, engine, sensors, decision modules, etc. IntelligentCar is the utopian smart car with complete autonomy, V2X communication, adherence to traffic rules etc. Developing the decision module of this type of vehicle is the main goal of this software.</p>
 </div>
 <div class="section" id="module-core.lib.vehicles.bus">
-<span id="core-lib-vehicles-bus-module"></span><h2>core.lib.vehicles.bus module<a class="headerlink" href="#module-core.lib.vehicles.bus" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="core.lib.vehicles.bus.Bus">
-<em class="property">class </em><code class="descclassname">core.lib.vehicles.bus.</code><code class="descname">Bus</code><span class="sig-paren">(</span><em>_id</em>, <em>name</em>, <em>physics</em>, <em>driver</em>, <em>adas</em>, <em>sensors</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.bus.Bus" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#core.lib.vehicles.vehicle.Vehicle" title="core.lib.vehicles.vehicle.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">core.lib.vehicles.vehicle.Vehicle</span></code></a></p>
-<dl class="method">
-<dt id="core.lib.vehicles.bus.Bus.get_length">
-<code class="descname">get_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.bus.Bus.get_length" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.bus.Bus.get_width">
-<code class="descname">get_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.bus.Bus.get_width" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<span id="vehicles-bus-module"></span><h2>vehicles.bus module<a class="headerlink" href="#module-core.lib.vehicles.bus" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.lib.vehicles.car">
-<span id="core-lib-vehicles-car-module"></span><h2>core.lib.vehicles.car module<a class="headerlink" href="#module-core.lib.vehicles.car" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="core.lib.vehicles.car.Car">
-<em class="property">class </em><code class="descclassname">core.lib.vehicles.car.</code><code class="descname">Car</code><span class="sig-paren">(</span><em>_id</em>, <em>name</em>, <em>physics</em>, <em>driver</em>, <em>adas</em>, <em>sensors</em>, <em>config</em>, <em>_type='car'</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.car.Car" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#core.lib.vehicles.vehicle.Vehicle" title="core.lib.vehicles.vehicle.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">core.lib.vehicles.vehicle.Vehicle</span></code></a></p>
-<dl class="method">
-<dt id="core.lib.vehicles.car.Car.get_length">
-<code class="descname">get_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.car.Car.get_length" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.car.Car.get_width">
-<code class="descname">get_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.car.Car.get_width" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
-<dl class="class">
-<dt id="core.lib.vehicles.car.IntelligentCar">
-<em class="property">class </em><code class="descclassname">core.lib.vehicles.car.</code><code class="descname">IntelligentCar</code><span class="sig-paren">(</span><em>_id</em>, <em>name</em>, <em>physics</em>, <em>driver</em>, <em>adas</em>, <em>sensors</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.car.IntelligentCar" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#core.lib.vehicles.car.Car" title="core.lib.vehicles.car.Car"><code class="xref py py-class docutils literal notranslate"><span class="pre">core.lib.vehicles.car.Car</span></code></a></p>
-</dd></dl>
-
+<span id="vehicles-car-module"></span><h2>vehicles.car module<a class="headerlink" href="#module-core.lib.vehicles.car" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.lib.vehicles.truck">
-<span id="core-lib-vehicles-truck-module"></span><h2>core.lib.vehicles.truck module<a class="headerlink" href="#module-core.lib.vehicles.truck" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="core.lib.vehicles.truck.Truck">
-<em class="property">class </em><code class="descclassname">core.lib.vehicles.truck.</code><code class="descname">Truck</code><span class="sig-paren">(</span><em>_id</em>, <em>name</em>, <em>physics</em>, <em>driver</em>, <em>adas</em>, <em>sensors</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.truck.Truck" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <a class="reference internal" href="#core.lib.vehicles.vehicle.Vehicle" title="core.lib.vehicles.vehicle.Vehicle"><code class="xref py py-class docutils literal notranslate"><span class="pre">core.lib.vehicles.vehicle.Vehicle</span></code></a></p>
-<dl class="method">
-<dt id="core.lib.vehicles.truck.Truck.get_length">
-<code class="descname">get_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.truck.Truck.get_length" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.truck.Truck.get_width">
-<code class="descname">get_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.truck.Truck.get_width" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<span id="vehicles-truck-module"></span><h2>vehicles.truck module<a class="headerlink" href="#module-core.lib.vehicles.truck" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.lib.vehicles.utils">
-<span id="core-lib-vehicles-utils-module"></span><h2>core.lib.vehicles.utils module<a class="headerlink" href="#module-core.lib.vehicles.utils" title="Permalink to this headline">¶</a></h2>
+<span id="vehicles-utils-module"></span><h2>vehicles.utils module<a class="headerlink" href="#module-core.lib.vehicles.utils" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.lib.vehicles.vehicle">
-<span id="core-lib-vehicles-vehicle-module"></span><h2>core.lib.vehicles.vehicle module<a class="headerlink" href="#module-core.lib.vehicles.vehicle" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="core.lib.vehicles.vehicle.Vehicle">
-<em class="property">class </em><code class="descclassname">core.lib.vehicles.vehicle.</code><code class="descname">Vehicle</code><span class="sig-paren">(</span><em>_id</em>, <em>name</em>, <em>physics</em>, <em>driver</em>, <em>adas</em>, <em>sensor_suite</em>, <em>_type</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.calculate_route">
-<code class="descname">calculate_route</code><span class="sig-paren">(</span><em>source</em>, <em>destination</em>, <em>weight='time'</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.calculate_route" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.driving_decision">
-<code class="descname">driving_decision</code><span class="sig-paren">(</span><em>reroute_flag=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.driving_decision" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_acceleration">
-<code class="descname">get_acceleration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_acceleration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_current_lane">
-<code class="descname">get_current_lane</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_current_lane" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_current_lane_no">
-<code class="descname">get_current_lane_no</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_current_lane_no" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_current_node">
-<code class="descname">get_current_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_current_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_current_road">
-<code class="descname">get_current_road</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_current_road" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_last_segment">
-<code class="descname">get_distance_from_last_segment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_last_segment" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_segment">
-<code class="descname">get_distance_from_next_segment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_segment" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_subnode">
-<code class="descname">get_distance_from_next_subnode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_subnode" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_road_end">
-<code class="descname">get_distance_from_road_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_road_end" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_heading">
-<code class="descname">get_heading</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_heading" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_history">
-<code class="descname">get_history</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_history" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_lane_change_flag">
-<code class="descname">get_lane_change_flag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_lane_change_flag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_lane_no">
-<code class="descname">get_lane_no</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_lane_no" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_length">
-<code class="descname">get_length</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_length" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_name">
-<code class="descname">get_name</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_next_node">
-<code class="descname">get_next_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_next_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_next_turn_direction">
-<code class="descname">get_next_turn_direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_next_turn_direction" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_route">
-<code class="descname">get_route</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_route" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.get_width">
-<code class="descname">get_width</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_width" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.vehicles.vehicle.Vehicle.id">
-<code class="descname">id</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.id" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.is_locked">
-<code class="descname">is_locked</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.is_locked" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.localize">
-<code class="descname">localize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.localize" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.lock">
-<code class="descname">lock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.lock" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.move">
-<code class="descname">move</code><span class="sig-paren">(</span><em>steering_angle</em>, <em>gas</em>, <em>brake</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.move" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.perceive">
-<code class="descname">perceive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.perceive" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.place_on_map">
-<code class="descname">place_on_map</code><span class="sig-paren">(</span><em>trip_start_node</em>, <em>trip_destination_node</em>, <em>traffic_graph</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.place_on_map" title="Permalink to this definition">¶</a></dt>
-<dd><p>It assigns a trip start node and destination node. Also it places the vehicle on the map.</p>
-<table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
-<li><strong>trip_start_node</strong> (<em>object</em>) – start node object</li>
-<li><strong>trip_destination_node</strong> (<em>object</em>) – destination node object</li>
-<li><strong>traffic_graph</strong> (<em>object</em>) – Traffic Graph that contains all the nodes and roads</li>
-</ul>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.re_route">
-<code class="descname">re_route</code><span class="sig-paren">(</span><em>weight='time'</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.re_route" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_acceleration">
-<code class="descname">set_acceleration</code><span class="sig-paren">(</span><em>acceleration</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_acceleration" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_current_node">
-<code class="descname">set_current_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_current_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_heading">
-<code class="descname">set_heading</code><span class="sig-paren">(</span><em>heading</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_heading" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_lane_change_flag">
-<code class="descname">set_lane_change_flag</code><span class="sig-paren">(</span><em>flag</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_lane_change_flag" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_lane_no">
-<code class="descname">set_lane_no</code><span class="sig-paren">(</span><em>lane_no</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_lane_no" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_name">
-<code class="descname">set_name</code><span class="sig-paren">(</span><em>name</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_name" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_next_node">
-<code class="descname">set_next_node</code><span class="sig-paren">(</span><em>node</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_next_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_route">
-<code class="descname">set_route</code><span class="sig-paren">(</span><em>route</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_route" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_speed">
-<code class="descname">set_speed</code><span class="sig-paren">(</span><em>speed</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_speed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_start_time">
-<code class="descname">set_start_time</code><span class="sig-paren">(</span><em>start_time</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_start_time" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_x">
-<code class="descname">set_x</code><span class="sig-paren">(</span><em>x</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.set_y">
-<code class="descname">set_y</code><span class="sig-paren">(</span><em>y</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.set_y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.vehicles.vehicle.Vehicle.speed">
-<code class="descname">speed</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.speed" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.step">
-<code class="descname">step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.step" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.vehicles.vehicle.Vehicle.type">
-<code class="descname">type</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.type" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.unlock">
-<code class="descname">unlock</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.unlock" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.update_current_road">
-<code class="descname">update_current_road</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.update_current_road" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.update_history">
-<code class="descname">update_history</code><span class="sig-paren">(</span><em>reading</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.update_history" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.update_node">
-<code class="descname">update_node</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.update_node" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.update_road_string">
-<code class="descname">update_road_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.update_road_string" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="method">
-<dt id="core.lib.vehicles.vehicle.Vehicle.update_traffic">
-<code class="descname">update_traffic</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.update_traffic" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.vehicles.vehicle.Vehicle.x">
-<code class="descname">x</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.x" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="attribute">
-<dt id="core.lib.vehicles.vehicle.Vehicle.y">
-<code class="descname">y</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.y" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-</dd></dl>
-
+<span id="vehicles-vehicle-module"></span><h2>vehicles.vehicle module<a class="headerlink" href="#module-core.lib.vehicles.vehicle" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.lib.vehicles.vehicle_factory">
-<span id="core-lib-vehicles-vehicle-factory-module"></span><h2>core.lib.vehicles.vehicle_factory module<a class="headerlink" href="#module-core.lib.vehicles.vehicle_factory" title="Permalink to this headline">¶</a></h2>
-<dl class="class">
-<dt id="core.lib.vehicles.vehicle_factory.VehicleFactory">
-<em class="property">class </em><code class="descclassname">core.lib.vehicles.vehicle_factory.</code><code class="descname">VehicleFactory</code><a class="headerlink" href="#core.lib.vehicles.vehicle_factory.VehicleFactory" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
-<dl class="staticmethod">
-<dt id="core.lib.vehicles.vehicle_factory.VehicleFactory.build_vehicle">
-<em class="property">static </em><code class="descname">build_vehicle</code><span class="sig-paren">(</span><em>_id</em>, <em>_type</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle_factory.VehicleFactory.build_vehicle" title="Permalink to this definition">¶</a></dt>
-<dd></dd></dl>
-
-<dl class="staticmethod">
-<dt id="core.lib.vehicles.vehicle_factory.VehicleFactory.place_vehicle">
-<em class="property">static </em><code class="descname">place_vehicle</code><span class="sig-paren">(</span><em>vehicle</em>, <em>start_node</em>, <em>end_node</em>, <em>map_2d</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle_factory.VehicleFactory.place_vehicle" title="Permalink to this definition">¶</a></dt>
-<dd><table class="docutils field-list" frame="void" rules="none">
-<col class="field-name" />
-<col class="field-body" />
-<tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
-<li><strong>vehicle</strong> – vehicle object that has to be placed on the map</li>
-<li><strong>start_node</strong> – start node object</li>
-<li><strong>end_node</strong> – end node object</li>
-<li><strong>map_2d</strong> – TrafficGraph object on which the vehicle is placed</li>
-</ul>
-</td>
-</tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"></p>
-</td>
-</tr>
-</tbody>
-</table>
-</dd></dl>
-
-</dd></dl>
-
+<span id="vehicles-vehicle-factory-module"></span><h2>vehicles.vehicle_factory module<a class="headerlink" href="#module-core.lib.vehicles.vehicle_factory" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.lib.vehicles">
 <span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-core.lib.vehicles" title="Permalink to this headline">¶</a></h2>
@@ -437,19 +85,22 @@
         <div class="sphinxsidebarwrapper">
   <h3><a href="index.html">Table Of Contents</a></h3>
   <ul>
-<li><a class="reference internal" href="#">core.lib.vehicles package</a><ul>
-<li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.bus">core.lib.vehicles.bus module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.car">core.lib.vehicles.car module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.truck">core.lib.vehicles.truck module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.utils">core.lib.vehicles.utils module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.vehicle">core.lib.vehicles.vehicle module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.vehicle_factory">core.lib.vehicles.vehicle_factory module</a></li>
+<li><a class="reference internal" href="#">vehicles package</a><ul>
+<li><a class="reference internal" href="#overview">Overview</a></li>
+<li><a class="reference internal" href="#module-core.lib.vehicles.bus">vehicles.bus module</a></li>
+<li><a class="reference internal" href="#module-core.lib.vehicles.car">vehicles.car module</a></li>
+<li><a class="reference internal" href="#module-core.lib.vehicles.truck">vehicles.truck module</a></li>
+<li><a class="reference internal" href="#module-core.lib.vehicles.utils">vehicles.utils module</a></li>
+<li><a class="reference internal" href="#module-core.lib.vehicles.vehicle">vehicles.vehicle module</a></li>
+<li><a class="reference internal" href="#module-core.lib.vehicles.vehicle_factory">vehicles.vehicle_factory module</a></li>
 <li><a class="reference internal" href="#module-core.lib.vehicles">Module contents</a></li>
 </ul>
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.lib.sensors.html"
+                        title="previous chapter">sensors package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -459,14 +110,12 @@
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -482,12 +131,15 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.sensors.html" title="sensors package"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Ohio State University.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

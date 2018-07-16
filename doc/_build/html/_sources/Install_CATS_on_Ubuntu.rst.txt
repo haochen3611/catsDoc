@@ -47,9 +47,7 @@ Installing
    You will be asked for password to run the command. Make sure you have
    root access
 
--  **Third**, log out and log back in for the changes to take effect.
-
--  **Fourth**, you can start the program by running the
+-  **Third**, you can start the program by running the
    ``simulation.py`` in the ``core`` folder. A simple way to do this is
    to enter the following commands in the terminal.
 

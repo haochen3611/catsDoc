@@ -19,7 +19,7 @@ make html
 
 #cp ./modified_rst/* ./rst/
 
-#sphinx-build -b html ./rst/ ./_build/html/
+#sphinx-build -b html . ./_build/html/
 
 sudo rm -rf /var/www/html/test/*
 

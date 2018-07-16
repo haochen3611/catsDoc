@@ -1,30 +1,21 @@
-core.lib.maps package
-=====================
+maps package
+=======================
 
-Submodules
-----------
+Overview
+--------
+Imagine the diffculty in driving in a new city without the help of a maps service on your phone or car. Even for experienced cab drivers, it is often diffcult to navigate through city traffic, so let us not even discuss the plight of rookie drivers. It is easy to understand that modeling maps is central to the effectiveness of any simulation software. Self-driving start-ups are investing heavily in developing HD maps that explain the fine details of the environment around the vehicle. Putting it simply, the more realistic the maps look, the better the software.
 
-core.lib.maps.map module
-------------------------
+Similarly, modeling maps is central to the effectiveness of CATS. The most important requirements/features of maps are:
+    
+* Maps should represent an urban traffic scenario, along with the landscape of the city
+* Maps require a detailed modeling of roads, intersections, lanes, etc
+* Maps should encode the topological connections between roads, for routing
+* Specific to CATS, maps also store the spatial details of all the vehicles in the simulation.
+
+
+maps\.map module
+---------------------------
 
 .. automodule:: core.lib.maps.map
     :members:
-    :undoc-members:
-    :show-inheritance:
-
-core.lib.maps.utils module
---------------------------
-
-.. automodule:: core.lib.maps.utils
-    :members:
-    :undoc-members:
-    :show-inheritance:
-
-
-Module contents
----------------
-
-.. automodule:: core.lib.maps
-    :members:
-    :undoc-members:
-    :show-inheritance:
+    

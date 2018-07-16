@@ -4,18 +4,27 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <title>core.utils package &#8212; CATS  documentation</title>
     <link rel="stylesheet" href="_static/classic.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    <script type="text/javascript" src="_static/documentation_options.js"></script>
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" /> 
-  </head><body>
+  </head>
+  <body>
     <div class="related" role="navigation" aria-label="related navigation">
       <h3>Navigation</h3>
       <ul>
@@ -44,19 +53,19 @@
 <dl class="class">
 <dt id="core.utils.dot_dict.DotDict">
 <em class="property">class </em><code class="descclassname">core.utils.dot_dict.</code><code class="descname">DotDict</code><span class="sig-paren">(</span><em>dct</em><span class="sig-paren">)</span><a class="headerlink" href="#core.utils.dot_dict.DotDict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
-<p>a dictionary that supports dot notation
-as well as dictionary access notation
-usage: d = DotDict() or d = DotDict({‘val1’:’first’})
-set attributes: d.val2 = ‘second’ or d[‘val2’] = ‘second’
-get attributes: d.val2 or d[‘val2’]</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>A dictionary that supports dot notation as well as dictionary access notation.</p>
+<p class="rubric">Example</p>
+<p>d = DotDict() or d = DotDict({‘val1’:’first’})
+- set attributes: d.val2 = ‘second’ or d[‘val2’] = ‘second’
+- get attributes: d.val2 or d[‘val2’]</p>
 </dd></dl>
 
 <dl class="class">
 <dt id="core.utils.dot_dict.dotdict">
 <em class="property">class </em><code class="descclassname">core.utils.dot_dict.</code><code class="descname">dotdict</code><a class="headerlink" href="#core.utils.dot_dict.dotdict" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">dict</span></code></p>
-<p>dot.notation access to dictionary attributes</p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">dict</span></code></p>
+<p>Dot.notation access to dictionary attributes.</p>
 </dd></dl>
 
 </div>
@@ -65,7 +74,7 @@ get attributes: d.val2 or d[‘val2’]</p>
 <dl class="class">
 <dt id="core.utils.singleton.SingletonDecorator">
 <em class="property">class </em><code class="descclassname">core.utils.singleton.</code><code class="descname">SingletonDecorator</code><span class="sig-paren">(</span><em>klass</em><span class="sig-paren">)</span><a class="headerlink" href="#core.utils.singleton.SingletonDecorator" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
 </dd></dl>
 
 </div>
@@ -100,14 +109,12 @@ get attributes: d.val2 or d[‘val2’]</p>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
-    <div class="searchformwrapper">
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    </div>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -128,7 +135,7 @@ get attributes: d.val2 or d[‘val2’]</p>
     </div>
     <div class="footer" role="contentinfo">
         &#169; Copyright 2018, Ohio State University.
-      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.7.4.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.7.
     </div>
   </body>
 </html>

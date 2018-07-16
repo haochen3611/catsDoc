@@ -1,5 +1,5 @@
-core.lib package
-================
+core\.lib package
+=================
 
 Subpackages
 -----------
