@@ -132,9 +132,11 @@
 <code class="descname">control_steering</code><span class="sig-paren">(</span><em>sensor_reading</em>, <em>lane_change_flag</em>, <em>lane_center_dy_flag</em>, <em>heading_control_flag</em>, <em>road_width</em>, <em>road_heading</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.adas.lane_center.LaneCenter.control_steering" title="Permalink to this definition">¶</a></dt>
 <dd><p>Controller to steer the vehicle given the input observations. Abstracts out a reference heading to follow using
 the given inputs and calls <cite>heading_control</cite> to get a steering output.</p>
-<p class="rubric">Notes</p>
-<p>The several flags used here determine which controller is acting on the vehicle at that instant. Only one
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The several flags used here determine which controller is acting on the vehicle at that instant. Only one
 controller acts at a time, and selects a reference heading which is maintained using <cite>heading_control</cite>.</p>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -202,13 +204,13 @@ controller acts at a time, and selects a reference heading which is maintained u
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>visible_cars</strong> (<em>dict</em>) – contains vehicles objects within certain distance and their spatial relation to the traget car</li>
-<li><strong>direction</strong> (<em>String</em>) – the direction to be examined</li>
+<li><strong>direction</strong> (<em>str</em>) – the direction to be examined</li>
 <li><strong>lane_on</strong> (<em>int</em>) – the index of a lane</li>
 <li><strong>max_lane_no</strong> (<em>int</em>) – the maximum index of all lanes on the road</li>
 </ul>
 </td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(String, String)</p>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">(str, str)</p>
 </td>
 </tr>
 <tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">tuple</p>
@@ -228,7 +230,7 @@ controller acts at a time, and selects a reference heading which is maintained u
 <tbody valign="top">
 <tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
 <li><strong>car</strong> (<em>object</em>) – vehicle object</li>
-<li><strong>direction</strong> (<em>String</em>) – the direction of the vehicle is changing toward</li>
+<li><strong>direction</strong> (<em>str</em>) – the direction of the vehicle is changing toward</li>
 </ul>
 </td>
 </tr>

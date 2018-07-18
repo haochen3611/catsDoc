@@ -51,29 +51,341 @@
 <h1>vehicles package<a class="headerlink" href="#vehicles-package" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="overview">
 <h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
-<p>Vehicles module provides with classes and methods to create vehicles of different types, and a base Vehicle class that contains all the basic functionalities of any vehicle. We adopted a factory design pattern for the creation of a vehicle wherein, the creation of every Vehicle is forced through a common factory class VehicleFactory which has a build_vehicle method, which takes the vehicle config such as vehicle type, sensors, engine and instantiates the corresponding Vehicle object, and place_on_map which takes a start node and end node of type CATS.maps.Node and places it on the map.</p>
+<p>Vehicles package provides with classes and methods to create vehicles of different types, and a base Vehicle class that contains all the basic functionalities of any vehicle. We adopted a factory design pattern for the creation of a vehicle wherein, the creation of every Vehicle is forced through a common factory class VehicleFactory which has a build_vehicle method, which takes the vehicle config such as vehicle type, sensors, engine and instantiates the corresponding Vehicle object, and place_on_map which takes a start node and end node of type CATS.maps.Node and places it on the map.</p>
 <p>We implemented different types of vehicles which inherit the base Vehicle class. As of now, we have Car, Truck, Bus and Intelligent Car. The different types of vehicles differ in their physical attributes like length, width, engine, sensors, decision modules, etc. IntelligentCar is the utopian smart car with complete autonomy, V2X communication, adherence to traffic rules etc. Developing the decision module of this type of vehicle is the main goal of this software.</p>
-</div>
-<div class="section" id="module-core.lib.vehicles.bus">
-<span id="vehicles-bus-module"></span><h2>vehicles.bus module<a class="headerlink" href="#module-core.lib.vehicles.bus" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-core.lib.vehicles.car">
-<span id="vehicles-car-module"></span><h2>vehicles.car module<a class="headerlink" href="#module-core.lib.vehicles.car" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-core.lib.vehicles.truck">
-<span id="vehicles-truck-module"></span><h2>vehicles.truck module<a class="headerlink" href="#module-core.lib.vehicles.truck" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-core.lib.vehicles.utils">
-<span id="vehicles-utils-module"></span><h2>vehicles.utils module<a class="headerlink" href="#module-core.lib.vehicles.utils" title="Permalink to this headline">¶</a></h2>
 </div>
 <div class="section" id="module-core.lib.vehicles.vehicle">
 <span id="vehicles-vehicle-module"></span><h2>vehicles.vehicle module<a class="headerlink" href="#module-core.lib.vehicles.vehicle" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="core.lib.vehicles.vehicle.Vehicle">
+<em class="property">class </em><code class="descclassname">core.lib.vehicles.vehicle.</code><code class="descname">Vehicle</code><span class="sig-paren">(</span><em>_id</em>, <em>name</em>, <em>physics</em>, <em>driver</em>, <em>adas</em>, <em>sensor_suite</em>, <em>_type</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Contains the basic functionalities of most vehicles. It provides methods to create vehicles of different types.</p>
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._ID">
+<code class="descname">_ID</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._ID" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – unique id of the vehicle</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._name">
+<code class="descname">_name</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._name" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – name of the vehicle if any</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._physics">
+<code class="descname">_physics</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._physics" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – physics object that simulates a two wheel or four wheel drive</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._sensor_suite">
+<code class="descname">_sensor_suite</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._sensor_suite" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – dict of various sensors</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._adas">
+<code class="descname">_adas</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._adas" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – instantiation of ADAS class</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._type">
+<code class="descname">_type</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._type" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – type of the vehicle</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._v2x">
+<code class="descname">_v2x</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._v2x" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – communication module</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._x">
+<code class="descname">_x</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._x" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – coordinate</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._y">
+<code class="descname">_y</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._y" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – coordinate</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._length">
+<code class="descname">_length</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._length" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – length</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._width">
+<code class="descname">_width</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._width" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>float</em> – width</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._color">
+<code class="descname">_color</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._color" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>str</em> – color</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._perceived_attr">
+<code class="descname">_perceived_attr</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._perceived_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – sensor readings</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._localized_attr">
+<code class="descname">_localized_attr</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._localized_attr" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>dict</em> – inferences from the sensor readings</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._traffic_graph">
+<code class="descname">_traffic_graph</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._traffic_graph" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – maps class</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._trip_start_time">
+<code class="descname">_trip_start_time</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._trip_start_time" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>int</em> – start time</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._current_node">
+<code class="descname">_current_node</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._current_node" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – present node</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="core.lib.vehicles.vehicle.Vehicle._next_node">
+<code class="descname">_next_node</code><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle._next_node" title="Permalink to this definition">¶</a></dt>
+<dd><p><em>object</em> – next node</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt>
+<code class="descname">_current road</code></dt>
+<dd><p><em>object</em> – current road</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.calculate_route">
+<code class="descname">calculate_route</code><span class="sig-paren">(</span><em>source</em>, <em>destination</em>, <em>weight='time'</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.calculate_route" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates a shortest route with preference on certain aspect.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>source</strong> (<em>int</em>) – starting point node id</li>
+<li><strong>destination</strong> (<em>int</em>) – ending point node id</li>
+<li><strong>weight</strong> (<em>str</em>) – parameters based on which the cost is calculated</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">a list of the node ids along the shortest path from the source to the destination</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last">list</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.driving_decision">
+<code class="descname">driving_decision</code><span class="sig-paren">(</span><em>reroute_flag=True</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.driving_decision" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is the intelligence module which decides what to do based on the perceived and localized attributes. Decisions include lane change, cruise control, overtake, etc.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>reroute_flag</strong> (<em>Optional</em><em>[</em><em>bool</em><em>]</em>) – a flag which determines if the vehicle has to be rerouted</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">(steering_angle, gas, brake)</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body">tuple</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_last_segment">
+<code class="descname">get_distance_from_last_segment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_last_segment" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the distance from the vehicle to the last segment</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_segment">
+<code class="descname">get_distance_from_next_segment</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_segment" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">the distance from the vehicle to the next segment</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">float</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_subnode">
+<code class="descname">get_distance_from_next_subnode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_subnode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the distance between the vehicle position and the next subnode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.get_distance_from_road_end">
+<code class="descname">get_distance_from_road_end</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_distance_from_road_end" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculates the distance between the vehicle position and the end of the road.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.get_next_turn_direction">
+<code class="descname">get_next_turn_direction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.get_next_turn_direction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">direction for the next turn</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body">str</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.localize">
+<code class="descname">localize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.localize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Fuses sensor readings and data from communication module to localize the vehicle, e.g. distance from front vehicle, distance from lane end etc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.move">
+<code class="descname">move</code><span class="sig-paren">(</span><em>steering_angle</em>, <em>gas</em>, <em>brake</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Uses the control signal and passes to the physics/engine module to update the coordinates of the vehicle</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>steering_angle</strong> (<em>float</em>) – in radians</li>
+<li><strong>gas</strong> (<em>float</em>) – acceleration to give. Normalized in 0 to 1</li>
+<li><strong>brake</strong> (<em>float</em>) – brake to give. Normalized in 0 to 1</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.perceive">
+<code class="descname">perceive</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.perceive" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perceives the environment through the available sensors such as GPS, speed etc.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.place_on_map">
+<code class="descname">place_on_map</code><span class="sig-paren">(</span><em>trip_start_node</em>, <em>trip_destination_node</em>, <em>traffic_graph</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.place_on_map" title="Permalink to this definition">¶</a></dt>
+<dd><p>It assigns a trip start node and destination node. Also it places the vehicle on the map.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>trip_start_node</strong> (<em>object</em>) – start node object</li>
+<li><strong>trip_destination_node</strong> (<em>object</em>) – destination node object</li>
+<li><strong>traffic_graph</strong> (<em>object</em>) – Traffic Graph that contains all the nodes and roads</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.step">
+<code class="descname">step</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.step" title="Permalink to this definition">¶</a></dt>
+<dd><p>Combines all the functionalities of a vehicle to a set of actions while the vehicle is moving.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="core.lib.vehicles.vehicle.Vehicle.update_road_string">
+<code class="descname">update_road_string</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle.Vehicle.update_road_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the road string attribute of a vehicle to the current road.</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 <div class="section" id="module-core.lib.vehicles.vehicle_factory">
 <span id="vehicles-vehicle-factory-module"></span><h2>vehicles.vehicle_factory module<a class="headerlink" href="#module-core.lib.vehicles.vehicle_factory" title="Permalink to this headline">¶</a></h2>
-</div>
-<div class="section" id="module-core.lib.vehicles">
-<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-core.lib.vehicles" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="core.lib.vehicles.vehicle_factory.VehicleFactory">
+<em class="property">class </em><code class="descclassname">core.lib.vehicles.vehicle_factory.</code><code class="descname">VehicleFactory</code><a class="headerlink" href="#core.lib.vehicles.vehicle_factory.VehicleFactory" title="Permalink to this definition">¶</a></dt>
+<dd><p>A factory design pattern for the creation of a vehicle wherein, the creation of every Vehicle is forced through this class.</p>
+<dl class="staticmethod">
+<dt id="core.lib.vehicles.vehicle_factory.VehicleFactory.build_vehicle">
+<em class="property">static </em><code class="descname">build_vehicle</code><span class="sig-paren">(</span><em>_id</em>, <em>_type</em>, <em>config</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle_factory.VehicleFactory.build_vehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes the vehicle config such as vehicle type, sensors, engine and instantiates the corresponding Vehicle object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>_id</strong> (<em>int</em>) – unique id of the vehicle</li>
+<li><strong>_type</strong> (<em>str</em>) – type of the vehicle</li>
+<li><strong>config</strong> (<em>dict</em>) – information about the vehicles</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="core.lib.vehicles.vehicle_factory.VehicleFactory.place_vehicle">
+<em class="property">static </em><code class="descname">place_vehicle</code><span class="sig-paren">(</span><em>vehicle</em>, <em>start_node</em>, <em>end_node</em>, <em>map_2d</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.vehicles.vehicle_factory.VehicleFactory.place_vehicle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Takes a start node and end node of type CATS.maps.Node and places it on the map (adds to CATS.maps.TrafficGraph). It is analogous to starting a trip, by setting the source and destination.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>vehicle</strong> (<em>object</em>) – vehicle object that has to be placed on the map</li>
+<li><strong>start_node</strong> (<em>object</em>) – start node object</li>
+<li><strong>end_node</strong> (<em>object</em>) – end node object</li>
+<li><strong>map_2d</strong> (<em>object</em>) – TrafficGraph object on which the vehicle is placed</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
 </div>
 </div>
 
@@ -87,13 +399,8 @@
   <ul>
 <li><a class="reference internal" href="#">vehicles package</a><ul>
 <li><a class="reference internal" href="#overview">Overview</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.bus">vehicles.bus module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.car">vehicles.car module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.truck">vehicles.truck module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles.utils">vehicles.utils module</a></li>
 <li><a class="reference internal" href="#module-core.lib.vehicles.vehicle">vehicles.vehicle module</a></li>
 <li><a class="reference internal" href="#module-core.lib.vehicles.vehicle_factory">vehicles.vehicle_factory module</a></li>
-<li><a class="reference internal" href="#module-core.lib.vehicles">Module contents</a></li>
 </ul>
 </li>
 </ul>

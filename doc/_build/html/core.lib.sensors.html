@@ -22,7 +22,9 @@
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
     <link rel="index" title="Index" href="genindex.html" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="vehicles package" href="core.lib.vehicles.html" />
+    <link rel="prev" title="physics package" href="core.lib.physics.html" /> 
   </head>
   <body>
     <div class="related" role="navigation" aria-label="related navigation">
@@ -34,6 +36,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.vehicles.html" title="vehicles package"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="core.lib.physics.html" title="physics package"
+             accesskey="P">previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>  
@@ -59,6 +67,10 @@
 <dt id="core.lib.sensors.sensor.BasicVisual.get_intersection_traffic">
 <em class="property">static </em><code class="descname">get_intersection_traffic</code><span class="sig-paren">(</span><em>car</em>, <em>tg</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.sensors.sensor.BasicVisual.get_intersection_traffic" title="Permalink to this definition">¶</a></dt>
 <dd><p>Used to ‘peep and look’ at turnings. Essentially used only in right of way rules to see if there is a car coming into the intersection from another road. Refer to the implementation docs for details on how this function works, and what the dict keys mean.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Currently this seems to be used at all time instants so often returns dict with keys from [1,8] or [0,7] which is probably when it is called when on turn roads. Don’t panic!!</p>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -77,8 +89,6 @@
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Currently this seems to be used at all time instants so often returns dict with keys from [1,8] or [0,7] which is probably when it is called when on turn roads. Don’t panic!!</p>
 </dd></dl>
 
 <dl class="staticmethod">
@@ -104,6 +114,10 @@
 <dt id="core.lib.sensors.sensor.BasicVisual.get_visible_cars">
 <em class="property">static </em><code class="descname">get_visible_cars</code><span class="sig-paren">(</span><em>car</em>, <em>tg</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.sensors.sensor.BasicVisual.get_visible_cars" title="Permalink to this definition">¶</a></dt>
 <dd><p>Shows cars that are visible to a human driver. Similar to what a driver can see (directly or via the mirrors, side or rear).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Instead of passing a car, pass only the attributes as a message or via a bus in the future.</p>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -122,7 +136,6 @@
 </tr>
 </tbody>
 </table>
-<p>Future: instead of passing a car, pass only the attributes as a message or via a bus</p>
 </dd></dl>
 
 </dd></dl>
@@ -161,7 +174,10 @@
 <dt id="core.lib.sensors.sensor.LaneCenterSensor">
 <em class="property">class </em><code class="descclassname">core.lib.sensors.sensor.</code><code class="descname">LaneCenterSensor</code><a class="headerlink" href="#core.lib.sensors.sensor.LaneCenterSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulates a sensor that gives offset from the lane center.</p>
-<p>Future: Implementation might have to change for curved roads/roadstring ds.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Implementation might have to change for curved roads/roadstring ds in the future.</p>
+</div>
 <dl class="staticmethod">
 <dt id="core.lib.sensors.sensor.LaneCenterSensor.get_lane_center_dtheta">
 <em class="property">static </em><code class="descname">get_lane_center_dtheta</code><span class="sig-paren">(</span><em>car</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.sensors.sensor.LaneCenterSensor.get_lane_center_dtheta" title="Permalink to this definition">¶</a></dt>
@@ -184,6 +200,10 @@
 <dt id="core.lib.sensors.sensor.LaneCenterSensor.get_lane_center_dy">
 <em class="property">static </em><code class="descname">get_lane_center_dy</code><span class="sig-paren">(</span><em>car</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.sensors.sensor.LaneCenterSensor.get_lane_center_dy" title="Permalink to this definition">¶</a></dt>
 <dd><p>Takes in car object and returns the displacement from the lane center.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Calculates distance from left edge of road and subtracts lane number * lane width.</p>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -196,14 +216,16 @@
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Calculates distance from left edge of road and subtracts lane number * lane width.</p>
 </dd></dl>
 
 <dl class="staticmethod">
 <dt id="core.lib.sensors.sensor.LaneCenterSensor.offset_direction">
 <em class="property">static </em><code class="descname">offset_direction</code><span class="sig-paren">(</span><em>car</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.sensors.sensor.LaneCenterSensor.offset_direction" title="Permalink to this definition">¶</a></dt>
 <dd><p>Deprecated. When lane center was calculated using distance from center of road, this method was used to check if the car is to the left of the road center or to the right.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not using this currently.</p>
+</div>
 <table class="docutils field-list" frame="void" rules="none">
 <col class="field-name" />
 <col class="field-body" />
@@ -216,8 +238,6 @@
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<p>Not using this currently.</p>
 </dd></dl>
 
 </dd></dl>
@@ -226,23 +246,26 @@
 <dt id="core.lib.sensors.sensor.PositionBasedVelocityEstimator">
 <em class="property">class </em><code class="descclassname">core.lib.sensors.sensor.</code><code class="descname">PositionBasedVelocityEstimator</code><a class="headerlink" href="#core.lib.sensors.sensor.PositionBasedVelocityEstimator" title="Permalink to this definition">¶</a></dt>
 <dd><p>Estimates the vehicle speed based on its position.</p>
-<p class="rubric">Notes</p>
-<p>Not implemented currently. returning the speed directly.</p>
-<p>Future: implement a fusion of speed sensor and position based velocity estimator.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not implemented currently. returning the speed directly. Will be implemented a fusion of speed sensor and position based velocity estimator.</p>
+</div>
 </dd></dl>
 
 <dl class="class">
 <dt id="core.lib.sensors.sensor.VehicleSpeedSensor">
 <em class="property">class </em><code class="descclassname">core.lib.sensors.sensor.</code><code class="descname">VehicleSpeedSensor</code><span class="sig-paren">(</span><em>car=None</em><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.sensors.sensor.VehicleSpeedSensor" title="Permalink to this definition">¶</a></dt>
 <dd><p>Simulates a speed sensor.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Will be implemented with noisy version of speed and sensor fusion using GPS data.</p>
+</div>
 <dl class="attribute">
 <dt id="core.lib.sensors.sensor.VehicleSpeedSensor.car">
 <code class="descname">car</code><a class="headerlink" href="#core.lib.sensors.sensor.VehicleSpeedSensor.car" title="Permalink to this definition">¶</a></dt>
 <dd><p><em>object</em> – Vehicle object</p>
 </dd></dl>
 
-<p>Todo: Implement noisy version of speed.</p>
-<p>Future: Implement sensor fusion using GPS data.</p>
 <dl class="method">
 <dt id="core.lib.sensors.sensor.VehicleSpeedSensor.read_speed">
 <code class="descname">read_speed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#core.lib.sensors.sensor.VehicleSpeedSensor.read_speed" title="Permalink to this definition">¶</a></dt>
@@ -419,17 +442,18 @@
 </tr>
 </tbody>
 </table>
-<p class="rubric">Notes</p>
-<dl class="docutils">
-<dt>Currently only includes the following sensors.</dt>
-<dd><ul class="first last simple">
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Currently only includes the following sensors.</p>
+<blockquote class="last">
+<div><ul class="simple">
 <li>‘gps’</li>
 <li>‘lane_center’</li>
 <li>‘speed’</li>
 <li>‘basic_visual’</li>
 </ul>
-</dd>
-</dl>
+</div></blockquote>
+</div>
 </dd></dl>
 
 </dd></dl>
@@ -453,6 +477,12 @@
 </li>
 </ul>
 
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="core.lib.physics.html"
+                        title="previous chapter">physics package</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="core.lib.vehicles.html"
+                        title="next chapter">vehicles package</a></p>
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
@@ -483,6 +513,12 @@
         <li class="right" >
           <a href="py-modindex.html" title="Python Module Index"
              >modules</a> |</li>
+        <li class="right" >
+          <a href="core.lib.vehicles.html" title="vehicles package"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="core.lib.physics.html" title="physics package"
+             >previous</a> |</li>
         <li class="nav-item nav-item-0"><a href="index.html">CATS  documentation</a> &#187;</li> 
       </ul>
     </div>

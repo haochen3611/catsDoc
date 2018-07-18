@@ -58,6 +58,7 @@
  | <a href="#H"><strong>H</strong></a>
  | <a href="#I"><strong>I</strong></a>
  | <a href="#L"><strong>L</strong></a>
+ | <a href="#M"><strong>M</strong></a>
  | <a href="#N"><strong>N</strong></a>
  | <a href="#O"><strong>O</strong></a>
  | <a href="#P"><strong>P</strong></a>
@@ -66,7 +67,6 @@
  | <a href="#T"><strong>T</strong></a>
  | <a href="#U"><strong>U</strong></a>
  | <a href="#V"><strong>V</strong></a>
- | <a href="#W"><strong>W</strong></a>
  | <a href="#X"><strong>X</strong></a>
  | <a href="#Y"><strong>Y</strong></a>
  
@@ -158,8 +158,6 @@
         <li><a href="core.lib.maps.html#core.lib.maps.map.Road.__osmid">(core.lib.maps.map.Road attribute)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.maps.html#core.lib.maps.map.Node.__parent">__parent (core.lib.maps.map.Node attribute)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.RoadString.__perpendicular_segments">__perpendicular_segments (core.lib.maps.map.RoadString attribute)</a>
@@ -178,6 +176,8 @@
 </li>
       <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficController.__scale">__scale (core.lib.infrastructure.traffic.TrafficController attribute)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.maps.html#core.lib.maps.map.RoadString.__segment_headings">__segment_headings (core.lib.maps.map.RoadString attribute)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.__sinks">__sinks (core.lib.maps.map.TrafficGraph attribute)</a>
@@ -242,7 +242,43 @@
         <li><a href="core.lib.maps.html#core.lib.maps.map.SubNode.__y">(core.lib.maps.map.SubNode attribute)</a>
 </li>
       </ul></li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._adas">_adas (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._color">_color (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._current_node">_current_node (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._ID">_ID (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._length">_length (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._localized_attr">_localized_attr (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._name">_name (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._next_node">_next_node (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._perceived_attr">_perceived_attr (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._physics">_physics (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._sensor_suite">_sensor_suite (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph._simulation">_simulation (core.lib.maps.map.TrafficGraph attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._traffic_graph">_traffic_graph (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._trip_start_time">_trip_start_time (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._type">_type (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._v2x">_v2x (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._width">_width (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._x">_x (core.lib.vehicles.vehicle.Vehicle attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle._y">_y (core.lib.vehicles.vehicle.Vehicle attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -276,12 +312,16 @@
 </li>
       <li><a href="core.lib.sensors.html#core.lib.sensors.sensor_factory.SensorFactory.build_sensor">build_sensor() (core.lib.sensors.sensor_factory.SensorFactory static method)</a>
 </li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle_factory.VehicleFactory.build_vehicle">build_vehicle() (core.lib.vehicles.vehicle_factory.VehicleFactory static method)</a>
+</li>
   </ul></td>
 </tr></table>
 
 <h2 id="C">C</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.calculate_route">calculate_route() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
       <li><a href="core.lib.adas.html#core.lib.adas.lane_change.LaneChange.can_change_lane">can_change_lane() (core.lib.adas.lane_change.LaneChange method)</a>
 </li>
       <li><a href="core.lib.sensors.html#core.lib.sensors.sensor.VehicleSpeedSensor.car">car (core.lib.sensors.sensor.VehicleSpeedSensor attribute)</a>
@@ -293,18 +333,6 @@
       <li><a href="core.lib.adas.html#core.lib.adas.longitudinal_contrl.LongitudinalControl.control">control() (core.lib.adas.longitudinal_contrl.LongitudinalControl method)</a>
 </li>
       <li><a href="core.lib.adas.html#core.lib.adas.lane_center.LaneCenter.control_steering">control_steering() (core.lib.adas.lane_center.LaneCenter method)</a>
-</li>
-      <li><a href="core.html#module-core">core (module)</a>
-</li>
-      <li><a href="core.html#module-core.constants">core.constants (module)</a>
-</li>
-      <li><a href="core.html#module-core.display_pb2">core.display_pb2 (module)</a>
-</li>
-      <li><a href="core.html#module-core.features">core.features (module)</a>
-</li>
-      <li><a href="core.html#module-core.helpers">core.helpers (module)</a>
-</li>
-      <li><a href="core.lib.html#module-core.lib">core.lib (module)</a>
 </li>
       <li><a href="core.lib.adas.html#module-core.lib.adas.driving_model">core.lib.adas.driving_model (module)</a>
 </li>
@@ -320,39 +348,23 @@
 </li>
       <li><a href="core.lib.display.html#module-core.lib.display.pygame_draw_tools">core.lib.display.pygame_draw_tools (module)</a>
 </li>
-      <li><a href="core.lib.driver.html#module-core.lib.driver.driver_attributes">core.lib.driver.driver_attributes (module)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.lib.driver.html#module-core.lib.driver.driver_attributes">core.lib.driver.driver_attributes (module)</a>
+</li>
       <li><a href="core.lib.infrastructure.html#module-core.lib.infrastructure.traffic">core.lib.infrastructure.traffic (module)</a>
 </li>
       <li><a href="core.lib.maps.html#module-core.lib.maps.map">core.lib.maps.map (module)</a>
 </li>
       <li><a href="core.lib.physics.html#module-core.lib.physics.update_car_states">core.lib.physics.update_car_states (module)</a>
 </li>
-      <li><a href="core.lib.physics.html#module-core.lib.physics.utils">core.lib.physics.utils (module)</a>
-</li>
       <li><a href="core.lib.sensors.html#module-core.lib.sensors.sensor">core.lib.sensors.sensor (module)</a>
 </li>
       <li><a href="core.lib.sensors.html#module-core.lib.sensors.sensor_factory">core.lib.sensors.sensor_factory (module)</a>
 </li>
-      <li><a href="core.lib.vehicles.html#module-core.lib.vehicles">core.lib.vehicles (module)</a>
-</li>
-      <li><a href="core.lib.vehicles.html#module-core.lib.vehicles.bus">core.lib.vehicles.bus (module)</a>
-</li>
-      <li><a href="core.lib.vehicles.html#module-core.lib.vehicles.car">core.lib.vehicles.car (module)</a>
-</li>
-      <li><a href="core.lib.vehicles.html#module-core.lib.vehicles.truck">core.lib.vehicles.truck (module)</a>
-</li>
-      <li><a href="core.lib.vehicles.html#module-core.lib.vehicles.utils">core.lib.vehicles.utils (module)</a>
-</li>
       <li><a href="core.lib.vehicles.html#module-core.lib.vehicles.vehicle">core.lib.vehicles.vehicle (module)</a>
 </li>
       <li><a href="core.lib.vehicles.html#module-core.lib.vehicles.vehicle_factory">core.lib.vehicles.vehicle_factory (module)</a>
-</li>
-      <li><a href="core.html#module-core.proto_helper">core.proto_helper (module)</a>
-</li>
-      <li><a href="core.html#module-core.simulation">core.simulation (module)</a>
 </li>
       <li><a href="core.utils.html#module-core.utils">core.utils (module)</a>
 </li>
@@ -387,6 +399,8 @@
 </li>
       </ul></li>
       <li><a href="core.lib.driver.html#core.lib.driver.driver_attributes.IntelligentDriver.Driver">Driver (core.lib.driver.driver_attributes.IntelligentDriver attribute)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.driving_decision">driving_decision() (core.lib.vehicles.vehicle.Vehicle method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -426,7 +440,15 @@
 </li>
       <li><a href="core.lib.sensors.html#core.lib.sensors.sensor.get_car_bounding_box_front">get_car_bounding_box_front() (in module core.lib.sensors.sensor)</a>
 </li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.get_distance_from_last_segment">get_distance_from_last_segment() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_segment">get_distance_from_next_segment() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.get_distance_from_next_subnode">get_distance_from_next_subnode() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.Road.get_distance_from_road_center">get_distance_from_road_center() (core.lib.maps.map.Road method)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.get_distance_from_road_end">get_distance_from_road_end() (core.lib.vehicles.vehicle.Vehicle method)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.get_edge_attributes">get_edge_attributes() (core.lib.maps.map.TrafficGraph method)</a>
 </li>
@@ -452,10 +474,12 @@
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.get_nearest_nodes">get_nearest_nodes() (core.lib.maps.map.TrafficGraph method)</a>
 </li>
-      <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.get_nearest_vehicles">get_nearest_vehicles() (core.lib.maps.map.TrafficGraph method)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.get_nearest_vehicles">get_nearest_vehicles() (core.lib.maps.map.TrafficGraph method)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.get_next_turn_direction">get_next_turn_direction() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.get_node_attribute">get_node_attribute() (core.lib.maps.map.TrafficGraph method)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.Intersection.get_nodes">get_nodes() (core.lib.maps.map.Intersection method)</a>
@@ -542,17 +566,27 @@
 </li>
       <li><a href="core.lib.adas.html#core.lib.adas.lane_center.LaneCenter">LaneCenter (class in core.lib.adas.lane_center)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.sensors.html#core.lib.sensors.sensor.LaneCenterSensor">LaneCenterSensor (class in core.lib.sensors.sensor)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.adas.html#core.lib.adas.lane_change.LaneChange">LaneChange (class in core.lib.adas.lane_change)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.RoadString.line_string">line_string (core.lib.maps.map.RoadString attribute)</a>
 </li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.localize">localize() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
       <li><a href="core.lib.adas.html#core.lib.adas.driving_model.ADAS.longitudinal_control">longitudinal_control (core.lib.adas.driving_model.ADAS attribute)</a>
 </li>
       <li><a href="core.lib.adas.html#core.lib.adas.longitudinal_contrl.LongitudinalControl">LongitudinalControl (class in core.lib.adas.longitudinal_contrl)</a>
+</li>
+  </ul></td>
+</tr></table>
+
+<h2 id="M">M</h2>
+<table style="width: 100%" class="indextable genindextable"><tr>
+  <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.move">move() (core.lib.vehicles.vehicle.Vehicle method)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -562,13 +596,11 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.maps.html#core.lib.maps.map.RoadString.no_sub_nodes">no_sub_nodes (core.lib.maps.map.RoadString attribute)</a>
 </li>
-      <li><a href="core.lib.maps.html#core.lib.maps.map.Node">Node (class in core.lib.maps.map)</a>
-</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficSignal.node">node (core.lib.infrastructure.traffic.TrafficSignal attribute)</a>
+      <li><a href="core.lib.maps.html#core.lib.maps.map.Node">Node (class in core.lib.maps.map)</a>
 </li>
-      <li><a href="core.html#core.helpers.norm">norm() (in module core.helpers)</a>
+      <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficSignal.node">node (core.lib.infrastructure.traffic.TrafficSignal attribute)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -586,11 +618,15 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.maps.html#core.lib.maps.map.Node.parent">parent (core.lib.maps.map.Node attribute)</a>
 </li>
-      <li><a href="core.html#core.helpers.perpendicular_distance_of_point_from_line">perpendicular_distance_of_point_from_line() (in module core.helpers)</a>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.perceive">perceive() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="core.lib.maps.html#core.lib.maps.map.RoadString.perpendicular_segments">perpendicular_segments (core.lib.maps.map.RoadString attribute)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="core.lib.maps.html#core.lib.maps.map.RoadString.perpendicular_segments">perpendicular_segments (core.lib.maps.map.RoadString attribute)</a>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.place_on_map">place_on_map() (core.lib.vehicles.vehicle.Vehicle method)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle_factory.VehicleFactory.place_vehicle">place_vehicle() (core.lib.vehicles.vehicle_factory.VehicleFactory static method)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.polygon_from_linestring">polygon_from_linestring() (in module core.lib.maps.map)</a>
 </li>
@@ -602,10 +638,6 @@
 <h2 id="R">R</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="core.html#core.proto_helper.read">read() (in module core.proto_helper)</a>
-</li>
-      <li><a href="core.html#core.proto_helper.read_car_state">read_car_state() (in module core.proto_helper)</a>
-</li>
       <li><a href="core.lib.sensors.html#core.lib.sensors.sensor.VehicleSpeedSensor.read_speed">read_speed() (core.lib.sensors.sensor.VehicleSpeedSensor method)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.Lane.remove_vehicle">remove_vehicle() (core.lib.maps.map.Lane method)</a>
@@ -614,10 +646,10 @@
         <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.remove_vehicle">(core.lib.maps.map.TrafficGraph method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficController.reset_signals">reset_signals() (core.lib.infrastructure.traffic.TrafficController method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.maps.html#core.lib.maps.map.Road.reset_traffic">reset_traffic() (core.lib.maps.map.Road method)</a>
 </li>
       <li><a href="core.lib.adas.html#core.lib.adas.longitudinal_contrl.LongitudinalControl.right_of_way">right_of_way() (core.lib.adas.longitudinal_contrl.LongitudinalControl method)</a>
@@ -648,10 +680,10 @@
 </li>
       <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficSignal.set_node">set_node() (core.lib.infrastructure.traffic.TrafficSignal method)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficSignal.set_state">set_state() (core.lib.infrastructure.traffic.TrafficSignal method)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficController.set_table">set_table() (core.lib.infrastructure.traffic.TrafficController method)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.SubNode.set_x">set_x() (core.lib.maps.map.SubNode method)</a>
@@ -661,6 +693,8 @@
       <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficController.signals">signals (core.lib.infrastructure.traffic.TrafficController attribute)</a>
 </li>
       <li><a href="core.utils.html#core.utils.singleton.SingletonDecorator">SingletonDecorator (class in core.utils.singleton)</a>
+</li>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.step">step() (core.lib.vehicles.vehicle.Vehicle method)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.SubNode">SubNode (class in core.lib.maps.map)</a>
 </li>
@@ -698,10 +732,12 @@
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.update_road_attributes">update_road_attributes() (core.lib.maps.map.TrafficGraph method)</a>
 </li>
-      <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficController.update_signals">update_signals() (core.lib.infrastructure.traffic.TrafficController method)</a>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle.update_road_string">update_road_string() (core.lib.vehicles.vehicle.Vehicle method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.lib.infrastructure.html#core.lib.infrastructure.traffic.TrafficController.update_signals">update_signals() (core.lib.infrastructure.traffic.TrafficController method)</a>
+</li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.Road.update_traffic_from_vehicle_data">update_traffic_from_vehicle_data() (core.lib.maps.map.Road method)</a>
 </li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.update_vehicle_network">update_vehicle_network() (core.lib.maps.map.TrafficGraph method)</a>
@@ -712,35 +748,15 @@
 <h2 id="V">V</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle.Vehicle">Vehicle (class in core.lib.vehicles.vehicle)</a>
+</li>
       <li><a href="core.lib.maps.html#core.lib.maps.map.TrafficGraph.vehicle_generator">vehicle_generator() (core.lib.maps.map.TrafficGraph method)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="core.lib.vehicles.html#core.lib.vehicles.vehicle_factory.VehicleFactory">VehicleFactory (class in core.lib.vehicles.vehicle_factory)</a>
+</li>
       <li><a href="core.lib.sensors.html#core.lib.sensors.sensor.VehicleSpeedSensor">VehicleSpeedSensor (class in core.lib.sensors.sensor)</a>
-</li>
-  </ul></td>
-</tr></table>
-
-<h2 id="W">W</h2>
-<table style="width: 100%" class="indextable genindextable"><tr>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="core.html#core.proto_helper.write">write() (in module core.proto_helper)</a>
-</li>
-      <li><a href="core.html#core.proto_helper.write_cars">write_cars() (in module core.proto_helper)</a>
-</li>
-      <li><a href="core.html#core.proto_helper.write_polygon">write_polygon() (in module core.proto_helper)</a>
-</li>
-      <li><a href="core.html#core.proto_helper.write_road">write_road() (in module core.proto_helper)</a>
-</li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="core.html#core.proto_helper.write_state">write_state() (in module core.proto_helper)</a>
-</li>
-      <li><a href="core.html#core.proto_helper.write_time">write_time() (in module core.proto_helper)</a>
-</li>
-      <li><a href="core.html#core.proto_helper.write_timestamp">write_timestamp() (in module core.proto_helper)</a>
-</li>
-      <li><a href="core.html#core.proto_helper.write_traffic">write_traffic() (in module core.proto_helper)</a>
 </li>
   </ul></td>
 </tr></table>

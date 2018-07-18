@@ -13,9 +13,3 @@ physics\.update\_car\_states module
 
 .. automodule:: core.lib.physics.update_car_states
     :members:
-      
-physics\.utils module
---------------------------------
-
-.. automodule:: core.lib.physics.utils
-    :members:
